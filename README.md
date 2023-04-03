@@ -31,3 +31,33 @@
    * Java Virtual Machine, 자바 프로그램 실행환경을 만들어 주는 소프트웨어로 자바 프로그램이 실행되는 가상 컴퓨터입니다.
    * 자바 프로그램은 JVM위에서 실행이 되기때문에 OS와 독립적일 수 있습니다.
    * 한번 작성하면, 어디서든 실행(Write once, run anywhere)
+# 자바 개발 도구의 설치와 설정
+1. 자바 개발 도구(JDK) 설치[(Download jdk from Oracle Site)](https://www.oracle.com/java/technologies/downloads/#java11)
+2. 통합 개발 환경 설치(eclipse or [STS](https://spring.io/tools) / [IntelliJ](https://www.jetbrains.com/ko-kr/idea/)) 
+3. window) 시스템 환경 변수 > Path 편집 > 다운받은 JDK의 bin폴더를 추가하고 맨위로 올리기.
+# 메모장을 이용하여 첫 번째 자바프로그램 작성
+1. 메모장에 아래의 내용을 적고 확장자를 꼭 java로 작성하여 저장해줍니다.( ex : Hello.java)
+```java
+class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, world"); // 화면에 글자를 출력한다.
+    }
+}
+```
+2. cmd창을 열어 아래의 명령어들을 통해 프로그램을 실행시켜 봅시다.
+```bash
+cd Hello.java #실행 시키고자 하는 경로로 진입.
+javac Hello.java #컴파일
+dir #컴파일 된 파일인 .class 파일이 있는지 확인, 자바 버츄얼 머신이 알아들을 수 있는 기계어로 변환(컴파일)된 것입니다.
+type Hello.java #바이너리파일, 이진파일로 사람이 알아볼 수 없는 언어로 되어있는 것을 확인.
+type Hello.java #사람이 알아들을 수 있는 텍스트파일을 확인.
+java Hello #실행할때는 확장자를 붙이지 않습니다. 프로그램 실행. 해당 코드가 출력된다.
+```
+* 만일 위의 과정 중 컴파일 할때 에러가 발생하게 되는 것을 **컴파일 에러**라고 하며, 컴파일이 되지 않습니다. 컴파일러가 어디서 어떤 에러가 발생했는지 알려줍니다.
+* 자바에서는 대문자와 소문자를 구별하기 때문에 주의해야 하며, 오타로 인한 오류메시지는 "**cannot find symbol**"입니다.
+* 1. javac.exe : **자바 컴파일러**, 사람이 작성한 문장을 기계어로 번역, 소스 파일(.java)을 클래스 파일(.class)로 변환
+  2. java.exe : **자바 인터프리터**, 자바 프로그램(클래스 파일)을 실행
+  3. 클래스 : 자바 프로그램의 단위, 자바 프로그램은 클래스들로 구성되어야 하며, 자바 프로그램은 최소한 하나 이상의 클래스로 이루어져야 합니다. 그리고 자바의 모든 문장들은 클래스의 { } 안에 있어야 합니다.
+     * { : 클래스의 시작
+     * } : 클래스의 끝
+  4. main메서드 : 자바 프로그램의 시작점으로 이 메서드없이는 실행이 불가합니다. 인터프리터(java.exe)가 지정한 클래스파일의 main 메서드를 찾아서 **첫 문장부터 순서대로 실행**되고, 모든 문장을 수행하면 프로그램이 종료됩니다. 
