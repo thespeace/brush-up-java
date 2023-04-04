@@ -36,9 +36,9 @@
 2. 통합 개발 환경 설치(eclipse or [STS](https://spring.io/tools) / [IntelliJ](https://www.jetbrains.com/ko-kr/idea/)) 
 3. window) 시스템 환경 변수 > Path 편집 > 다운받은 JDK의 bin폴더를 추가하고 맨위로 올리기.
 # 메모장을 이용하여 첫 번째 자바프로그램 작성
-1. 메모장에 아래의 내용을 적고 확장자를 꼭 java로 작성하여 저장해줍니다.( ex : Hello.java)
+1. 메모장에 아래의 내용을 적고 확장자를 꼭 java로 작성하여 저장해줍니다.( ex : Notepad.java)
 ```java
-class Hello {
+class Notepad {
     public static void main(String[] args) {
         System.out.println("Hello, world"); // 화면에 글자를 출력한다.
     }
@@ -46,12 +46,12 @@ class Hello {
 ```
 2. cmd창을 열어 아래의 명령어들을 통해 프로그램을 실행시켜 봅시다.
 ```bash
-cd Hello.java #실행 시키고자 하는 경로로 진입.
-javac Hello.java #컴파일
+cd Notepad.java #실행 시키고자 하는 경로로 진입.
+javac Notepad.java #컴파일
 dir #컴파일 된 파일인 .class 파일이 있는지 확인, 자바 버츄얼 머신이 알아들을 수 있는 기계어로 변환(컴파일)된 것입니다.
-type Hello.java #바이너리파일, 이진파일로 사람이 알아볼 수 없는 언어로 되어있는 것을 확인.
-type Hello.java #사람이 알아들을 수 있는 텍스트파일을 확인.
-java Hello #실행할때는 확장자를 붙이지 않습니다. 프로그램 실행. 해당 코드가 출력된다.
+type Notepad.java #바이너리파일, 이진파일로 사람이 알아볼 수 없는 언어로 되어있는 것을 확인.
+type Notepad.java #사람이 알아들을 수 있는 텍스트파일을 확인.
+java Notepad #실행할때는 확장자를 붙이지 않습니다. 프로그램 실행. 해당 코드가 출력된다.
 ```
 * 만일 위의 과정 중 컴파일 할때 에러가 발생하게 되는 것을 **컴파일 에러**라고 하며, 컴파일이 되지 않습니다. 컴파일러가 어디서 어떤 에러가 발생했는지 알려줍니다.
 * 자바에서는 대문자와 소문자를 구별하기 때문에 주의해야 하며, 오타로 인한 오류메시지는 "**cannot find symbol**"입니다.
