@@ -25,5 +25,7 @@ public class Part02_Variable03 {
         boolean power = true; //논리형
         char ch = 'A'; //문자형
         String str = "ABC"; //문자열
+        byte b = 127; // byte의 타입의 리터럴은 없기때문에, byte 타입의 변수에 값을 저장할 때에는 이처럼 integer 타입의 리터럴을 사용합니다.
+                      // 대신에 byte타입의 변수가 저장할 수 있는 범위의 값이어야 합니다. -128 ~ 127 까지의 제약이 존재합니다.
     }
 }
