@@ -13,13 +13,13 @@ public class Part02_Variable02 {
          *      1) 기본형 (Primitive type)
          *          - 값(data)의 종류와 크기
          *
-         *              |  종류  |                                 설 명                                  |      크기(byte)      | * 1bit = 2진수 1자리( 0 or 1 ) -> 1byte = 8bit.
+         *              |  종류  |                                   설 명                                    |      크기(byte)      | * 1bit = 2진수 1자리( 0 or 1 ) -> 1byte = 8bit.
          *              | 논리형 | true와 false중 하나를 값으로 갖으며, 조건식과 논리적 계산에 사용된다.           |  boolean(1)         |
          *              | 문자형 | 문자를 저장하는데 사용되며, 변수 당 하나의 문자만을 저장할 수 있다.              |  char(2)            |
-         *              |       |             <-> 여러문자(문자의 배열)는 String.                           |                     |
+         *              |       |             <-> 여러문자(문자의 배열)는 String.                             |                     |
          *              | 정수형 | 정수 값을 저장하는데 사용된다. 주로 사용하는 것은 int와 long(아주 큰 정수)이며,   | byte(1), short(2)  | * integer 타입이 default 타입.
          *              |       | byte는 이진 데이터를 다루는데 사용되며, short는 c언어와의 호환을 위해 추가되었다. |  int(4), long(8)   |
-         *              | 실수형 | 실수 값을 저장하는데 사용된다. float와 double이 있다.                        | float(4), double(8) | * double은 float보다 정밀도가 2배.
+         *              | 실수형 | 실수 값을 저장하는데 사용된다. float와 double이 있다.                          | float(4), double(8) | * double은 float보다 정밀도가 2배.
          *
          *              자바에서는 이와 같이 값의 종류에 따라 모두 8개의 타입을 정의할 수 있는데 이를 * 기본형 *이라고 합니다.
          *              값, 즉 데이터의 가장 기본이 되는 타입입니다.
