@@ -2,9 +2,9 @@ package example.ch01;
 
 public class Part02_Variable05 {
     public static void main(String[] args){
-        /* *
+        /**
          *    두 변수의 값 교환하기.
-         **/
+         */
 
         int x1 = 10, y1 = 20;
         x1 = y1; //y의 값을 x에 저장, x는 y로 대체.
