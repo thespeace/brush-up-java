@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch02;
 
-public class Part02_Variable03 {
+public class Variable03 {
     public static void main(String[] args){
         /**
          *  -리터럴의 접두사와 접미사?

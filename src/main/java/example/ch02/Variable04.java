@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch02;
 
-public class Part02_Variable04 {
+public class Variable04 {
     public static void main(String[] args){
         char ch = 'A'; //하나의 문자를 '(작은 따옴표)를 사용해 선언 및 초기화.
         System.out.println("character : "+ ch);

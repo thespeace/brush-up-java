@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch02;
 
-public class Part02_Variable02 {
+public class Variable02 {
     public static void main(String[] args){
         /**
          *  -변수의 타입?

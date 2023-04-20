@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch02;
 
-public class Part02_Variable06 {
+public class Variable06 {
     public static void main(String[] args){
         /**
          *    -오버플로우(Overflow)

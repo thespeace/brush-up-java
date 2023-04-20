@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch02;
 
-public class Part02_Variable01 {
+public class Variable01 {
     public static void main(String[] args) {
         /**
          *  -변수(Variable)란?

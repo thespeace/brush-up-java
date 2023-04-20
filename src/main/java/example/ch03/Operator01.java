@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch03;
 
-public class Part04_Operator01 {
+public class Operator01 {
     public static void main(String[] args){
         /**
          *    - 연산자와 피연산자

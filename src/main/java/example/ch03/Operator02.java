@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch03;
 
-public class Part04_Operator02 {
+public class Operator02 {
     public static void main(String[] args){
         /**
          *    - 연산자의 우선순위

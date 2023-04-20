@@ -1,8 +1,6 @@
 package example.ch01;
 
-import java.util.*;
-
-public class Part03_Scanner {
+public class Scanner {
     public static void main(String[] args) {
 
         /**
@@ -27,7 +25,7 @@ public class Part03_Scanner {
          *      * 입출력 관련 객체들은 사용한 후 반드시 닫아줘야 하지만, 화면입력같은 경우에는 JVM에 의해 자동적으로 관리가 됩니다.
          */
 
-        Scanner scanner = new Scanner(System.in);
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
 
         /*System.out.println("아무 숫자 두 번 입력하시오.");
         int num = scanner.nextInt();

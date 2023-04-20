@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch02;
 
-public class Part02_Variable07 {
+public class Variable07 {
     public static void main(String[] args){
         /**
          *    - 타입간의 변환 방법

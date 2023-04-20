@@ -1,6 +1,6 @@
-package example.ch01;
+package example.ch02;
 
-public class Part02_Variable05 {
+public class Variable05 {
     public static void main(String[] args){
         /**
          *    두 변수의 값 교환하기.
