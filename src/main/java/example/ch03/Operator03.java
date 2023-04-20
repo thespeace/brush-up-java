@@ -44,6 +44,5 @@ public class Operator03 {
 
         minus = -minus;
         System.out.println("부호 연산자 -를 사용 : "+minus); // 부호가 반대로 변경.
-
     }
 }
