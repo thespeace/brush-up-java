@@ -43,5 +43,21 @@ public class Operator08 {
         *  i % 2 == 0 || (i % 3 == 0 && i % 6 != 0)
         * */
 
+        char ch = '5';
+        System.out.println("문자 ch는 숫자('0'~'9')이다 : " + ('0' <= ch && ch <= '9'));
+        //유니코드에서 문자 '0'부터 '9'까지 연속적으로 배치되어 있기 때문에 가능한 식이다.
+
+        char ch2 = 'a';
+        System.out.println("문자 ch는 대문자 또는 소문자이다 : " + (('a' <= ch2 && ch2 <= 'z') || ('A' <= ch2 && ch2 <= 'z')));
+        //문자 'a'부터 'z'까지, 그리고 'A'부터 'Z'까지도 연속적으로 배치되어 있으므로 문자 ch가 대문자 또는 소문자인지 확인할 수 있다.
+
+
+        /*
+        *   - 논리 부정 연산자( ! )
+        *       "true를 false로, false는 true로 바꾼다."
+        * */
+
+        boolean b = true;
+        System.out.println("실행순서는 오른쪽에서 왼쪽으로 실행, b에 붙어있는 !가 먼저 실행되어 바깥의 !가 실행된다 : "+!!b); // !!b -> !!true -> !false -> true
     }
 }
