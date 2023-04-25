@@ -5,8 +5,8 @@ public class Conditional01 {
         /**
          *    - 조건문과 반복문
          *      "프로그램의 실행 순서(default : 위에서 아래로)를 바꿔준다고 해서 *제어문(control flow statements)*이라고 합니다."
-         *      조건문 : 조건을 만족할때만 {}를 수행(0~1번) ex) if문, if-else문, if-else if문
-         *      반복문 : 조건을 만족하는 동안 {}를 수행(0~n번) ex) for문, while문
+         *      조건문 : 조건을 만족할때만 {}를 수행(0~1번) ex) if문, if-else문, if-else if문, switch문.
+         *      반복문 : 조건을 만족하는 동안 {}를 수행(0~n번) ex) for문, while문.
          *
          *    - 블럭 { }
          *      여러 문장을 하나로 묶어주는 것
