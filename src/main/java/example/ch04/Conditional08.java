@@ -61,9 +61,68 @@ public class Conditional08 {
         }
 
         /**
-         *    -
+         *    - 이름 붙은 반복문
+         *      반복문에 이름을 붙여서 중첩된 경우 하나 이상의 반복문을 벗어날 수 있다.
          */
 
+        // 구구단 * 5는 하지 않고 찍기.
+        Loop1 : for(int x = 2; x <= 9; x++){ // <-Loop1이라는 이름의 for문.
+            for(int y = 1; y <= 9; y++){
+                if(y == 5)
+                    break Loop1; //<- 변수 y로 돌아가는 for문만 벗어나는게 아니라 그 위의 이름이 붙은 반복문(Loop1)도 벗어난다.
+//                  break; // 해당 반복문을 감싸는 반복문(Loop1)으로 나간다.
+//                  continue Loop1; // 거의 쓰이지 않지만, Loop1반복문을 수행하러 해당 반복문을 벗어난다.
+//                  continue; // 해당 반복문을 계속 진행한다.
+                System.out.println(x + "*" + y + "=" + x * y);
+            }// end of for y
+            System.out.println();
+        } // end of Loop1
+
+        //위의 continue 예제인 메뉴 선택하기를 보충하여 이름 붙은 반복문으로 값 계산하기까지 추가한 예제.
+
+        outer: //while문에 이름을 붙인다.
+        while(true){//outer이라는 이름을 붙인 무한 반복문
+            System.out.println("(1) square");
+            System.out.println("(2) square root");
+            System.out.println("(3) log");
+            System.out.print("원하는 메뉴(1~3)를 선택하세요.(종료:0) : ");
+
+            String tmp = scanner.nextLine();
+            menu = Integer.parseInt(tmp);
+
+            if(menu==0){
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            } else if (!(1 <= menu && menu <= 3)) {
+                System.out.println("메뉴를 잘못 선택하셨습니다.(종료는 0)");
+                continue;
+            }
+
+            for(;;){ //for문 무한 반복문
+                System.out.println("계산할 값을 입력하세요.(계산 종료:0, 전체 종료:99) : ");
+                tmp = scanner.nextLine();
+                num = Integer.parseInt(tmp);
+
+                if(num == 0)
+                    break; // 계산 종료, for문을 벗어난다,
+
+                if(num == 99)
+                    break outer; // 계산 종료, for문과 while문을 모두 벗어난다.
+
+                switch(menu) {
+                    case 1:
+                        System.out.println("result : " + num * num);
+                        break;
+                    case 2:
+                        System.out.println("result : " + Math.sqrt(num));
+                        break;
+                    case 3:
+                        System.out.println("result : " + Math.log(num));
+                        break;
+                }
+            }//for(;;)의 끝
+        }//while의 끝
+        System.out.println("프로그램이 종료되었습니다.");
 
     }
 }
