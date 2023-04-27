@@ -48,14 +48,14 @@ public class Conditional07 {
 
         System.out.println("=============================");
 
-        //각 자리수의 마지막 숫자의 합 구하기.
+        //각 자리수의 합 구하기.
         int num = 12345, sumNum = 0;
         while(num > 0){
             System.out.println("sumNum = " + sumNum + ", num % 10 : " + num % 10); // 10으로 나머지 연산을 하면 마지막 자리의 값을 얻는다.
             sumNum += num % 10;
             num = num / 10;
         }
-        System.out.println("각 자리수의 마지막 숫자의 합 : " + sumNum);
+        System.out.println("각 자리수의 합 : " + sumNum);
 
         System.out.println("=============================");
 
