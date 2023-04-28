@@ -1,7 +1,6 @@
 package example.ch05;
-import java.util.Scanner;
 
-public class array01 {
+public class Array01 {
     public static void main(String[] args){
         /**
          *    - 배열이란?
