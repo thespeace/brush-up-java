@@ -25,6 +25,7 @@ public class Array04 {
         System.out.println("총합 : " + sum);
         System.out.println("평균 : " + average);
 
+
         /**
          *    - 배열의 활용 (2)
          *      배열의 요소 중에서 제일 큰 값과 제일 작은 값을 찾기.
@@ -46,5 +47,21 @@ public class Array04 {
         System.out.println("최대값 : " + max);
         System.out.println("최소값 : " + min);
 
+
+        /**
+         *    - 배열의 활용 (3)
+         *      배열의 요소의 순서를 반복해서 바꾼다.(숫자 섞기, 로또번호 생성)
+         */
+
+        int[] numArr = {0,1,2,3,4,5,6,7,8,9};
+        System.out.println(Arrays.toString(numArr));
+
+        for(int i = 0; i < 100; i++){ //100번 두 요소 값 바꾸기.
+            int n = (int)(Math.random() * 10); // 0~9 중의 한 값을 임의로 얻는다.
+            int tmp = numArr[0];     //numArr[0]과 numArr[n]의 값을 서로 바꾼다.
+            numArr[0] = numArr[n];
+            numArr[n] = tmp;
+        }
+        System.out.println(Arrays.toString(numArr));
     }
 }
