@@ -58,10 +58,19 @@ public class Array04 {
 
         for(int i = 0; i < 100; i++){ //100번 두 요소 값 바꾸기.
             int n = (int)(Math.random() * 10); // 0~9 중의 한 값을 임의로 얻는다.
-            int tmp = numArr[0];     //numArr[0]과 numArr[n]의 값을 서로 바꾼다.
-            numArr[0] = numArr[n];
-            numArr[n] = tmp;
+
+            //numArr[0]과 numArr[n]의 값을 서로 바꾼다.
+            int tmp = numArr[0];   // ex) numArr[0]의 값을 변수 tmp에 저장한다.
+            numArr[0] = numArr[n]; // ex) numArr[3]의 값을 numArr[0]에 저장한다.
+            numArr[n] = tmp;       // ex) tmp의 값을 numArr[3]에 저장한다.
+            // 위의 로직을 예시를 들어 설명하자면, 우유가 든 컵과 물이 든 컵의 내용물을 바꾸려 한다면?
+            // 빈 컵(tmp)하나를 준비하고 이를 활용해서 둘 중 하나를 옮겨 담아 서로의 내용물을 바꾸는 방식으로 생각하면 이해가 쉽다.
         }
         System.out.println(Arrays.toString(numArr));
+
+
+
+
+
     }
 }
