@@ -3,23 +3,36 @@ package example.ch05;
 import java.util.Arrays;
 
 public class Array06 {
-    public static void main(String[] args){ // 사용자가 커멘트라인에 입력한 값을 문자열 배열로 args라는 참조변수로 받아서 사용할 수 있다.
+    public static void main(String[] args){
         /**
-         *    - 커맨드 라인을 통해 입력받기
-         *      커맨드 라인에 입력한 값이 문자열 배열에 담겨서 전달된다.
+         *    - String 클래스
          *
-         *      ex) brush-up-java/src/main/java/example/ch05 > java Array06.java abc 123 "Hello World"
-         *          String 배열 args[0] : abc, args[1] : 123, args[2] : Hello World 를 매개변수로 받아 사용할 수 있다.
+         *      1. String 클래스는 char[]와 메서드(기능)를 결합한 것
+         *          " String 클래스 = char[] + 메서드(기능) "
+         *          String(문자열)은 char(문자)의 나열.
          *
-         *      이처럼 커맨드 라인에 매개변수를 주는 방법으로 프로그램을 만들 수 있다. ex) 윈도우 커멘드 명령어 type 등등..
+         *      2. String 클래스는 내용을 변경할 수 없다.(read only)
+         *          ex) String a = "a";
+         *              String b = "b";
+         *              a = a + b; //위의 a,b라는 참조변수는 "a"가 저장되어 있는 0x100이라는 저장공간을 가리키고 있는 것이고, b라는 참조변수도 마찬가지로 0x200이라는 저장공간을 가리키고 있다.
+         *                         //a + b 값인 "ab"가 a에 대입되는 것은 a참조변수가 가리키던 0x100의 저장공간의 값이 "ab"로 바뀌는 것이 아니라, 0x300이라는 새로운 저장공간에 "ab"값을 담고,
+         *                         //그 저장공간(0x300)을 a라는 참조변수가 가리키게 되는것이다.
+         *
+         *    - String 클래스의 주요 메서드
+         *      상당히 많은 메서드 중 자주 쓰이는 몇 가지만 소개하겠습니다.
          */
 
-        // brush-up-java/src/main/java/example/ch05 > java Array06.java   // <- 매개변수를 입력하지 않았다.
-        System.out.println("매개변수의 개수 : " + args.length); // null값이 아니라 아무 내용이 없는 배열이 만들어져서 넘어간다.
-                                                             // 자바에서는 배열의 길이 0을 허용한다. "" 빈문자열 == 길이가 0인 배열.
-        for (int i = 0; i < args.length; i++){
-            System.out.println("args[" + i + "] = \"" + args[i] + "\"");
-        }
+        // 1. char charAt(int index) : 문자열에서 해당 위치(index)에 있는 문자를 반환한다.
+        String str = "ABCDE";
+        char ch = str.charAt(3); // 문자열 str의 4번째 문자 'D'를 ch에 저장.
+        System.out.println("charAt() : " + ch);
+
+        // 2. int length() : 문자열의 길이를 반환한다.
+        System.out.println("length() : " + str.length()); // 5문자.
+
+        // 3. String substring(int from, int to) : 문자열에서 해당 범위(from~to)의 문자열을 반환한다.(to는 포함 안 됨)
+        String tmp = str.substring(1,4); // str에서 index범위 1~4의 문자들을 반환
+        System.out.println("substring() : " + tmp);
 
     }
 }

@@ -1,38 +1,23 @@
 package example.ch05;
 
-import java.util.Arrays;
-
 public class Array07 {
-    public static void main(String[] args){
+    public static void main(String[] args){ // 사용자가 커멘트라인에 입력한 값을 문자열 배열로 args라는 참조변수로 받아서 사용할 수 있다.
         /**
-         *    - 2차원 배열
-         *      테이블 형태의 데이터를 저장하기 위한 배열, 간단히 말해 1차원 배열(여러 열이 모인 하나의 행)이 여러개 모인 것을 2차원 배열(여러 열과 여러 행)이라 한다.
-         *      ex) int[][] score = new int[4][3]; // 4행 3열의 2차원 배열을 생성한다. 4 * 3 = 12개의 저장 공간이 생성. 값은 integer의 기본값인 0.
+         *    - 커맨드 라인을 통해 입력받기
+         *      커맨드 라인에 입력한 값이 문자열 배열에 담겨서 전달된다.
          *
-         *      <------- 열 index( 0 ~ 열의 길이 -1 ) ------>
-         *      | score[0][0] | score[0][1] | score[0][2] |
-         *      | score[1][0] | score[1][1] | score[1][2] |   <- 행 index( 0 ~ 행의 길이 -1 )
-         *      | score[2][0] | score[2][1] | score[2][2] |
-         *      | score[3][0] | score[3][1] | score[3][2] |
+         *      ex) brush-up-java/src/main/java/example/ch05 > java Array06.java abc 123 "Hello World"
+         *          String 배열 args[0] : abc, args[1] : 123, args[2] : Hello World 를 매개변수로 받아 사용할 수 있다.
          *
-         *      score[0][0] = 100; // 1행 1열에 값을 저장.
-         *      System.out.println(score[0][0]); // 1행 1열에 값을 출력.
+         *      이처럼 커맨드 라인에 매개변수를 주는 방법으로 프로그램을 만들 수 있다. ex) 윈도우 커멘드 명령어 type 등등..
          */
 
-
-        /**
-         *    - 2차원 배열의 초기화
-         */
-        int[][] arr1 = new int[][]{ {1, 2, 3}, {4, 5, 6} };
-        int[][] arr2 = { {1, 2, 3}, {4, 5, 6} }; // new int[][] 생략 가능. 해당 초기화식이 훨씬 더 많이 사용.
-
-        int[][] arr3 = {  //위 식보다는 꼬부랑 괄호를 이와 같이 사용하는 것이 가독성면에서 훨씬 좋다.
-                {1, 2, 3},
-                {4, 5, 6}
-        };
-        System.out.println(Arrays.toString(arr1));
-        System.out.println(Arrays.toString(arr2));
-        System.out.println(Arrays.toString(arr3));
+        // brush-up-java/src/main/java/example/ch05 > java Array06.java   // <- 매개변수를 입력하지 않았다.
+        System.out.println("매개변수의 개수 : " + args.length); // null값이 아니라 아무 내용이 없는 배열이 만들어져서 넘어간다.
+                                                             // 자바에서는 배열의 길이 0을 허용한다. "" 빈문자열 == 길이가 0인 배열.
+        for (int i = 0; i < args.length; i++){
+            System.out.println("args[" + i + "] = \"" + args[i] + "\"");
+        }
 
     }
 }
