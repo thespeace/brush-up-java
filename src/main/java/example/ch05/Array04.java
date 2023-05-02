@@ -50,13 +50,14 @@ public class Array04 {
 
         /**
          *    - 배열의 활용 (3)
-         *      배열의 요소의 순서를 반복해서 바꾼다.(숫자 섞기, 로또번호 생성)
+         *      배열의 요소의 순서를 반복해서 바꾼다.(숫자 섞기)
          */
 
         int[] numArr = {0,1,2,3,4,5,6,7,8,9};
         System.out.println(Arrays.toString(numArr));
 
         for(int i = 0; i < 100; i++){ //100번 두 요소 값 바꾸기.
+            // ex) int n = 3; // 해당 코드로 실행하면, 4번째 인덱스값과 0번째 인덱스 값이 바뀐다.
             int n = (int)(Math.random() * 10); // 0~9 중의 한 값을 임의로 얻는다.
 
             //numArr[0]과 numArr[n]의 값을 서로 바꾼다.
@@ -68,9 +69,36 @@ public class Array04 {
         }
         System.out.println(Arrays.toString(numArr));
 
+        /**
+         *    - 배열의 활용 (4)
+         *      배열의 요소의 순서를 반복해서 바꾼다.(로또번호 생성)
+         */
 
+        // index : 0~45-1, 0~44
+        int[] ball = new int[45]; // 45개의 정수값을 저장하기 위한 배열 생성.
 
+        //배열의 각 요소에 1~45의 값을 저장한다.
+        for(int i = 0; i < ball.length; i++)
+            ball[i] = i + 1; // ball[0]에 1이 저장된다.
 
+        System.out.println(Arrays.toString(ball));
+
+        int tmp = 0; // 두 값을 바꾸는데 사용할 임시변수.
+        int j = 0;   // 임의의 값을 얻어서 저장할 변수.
+
+        // 배열의 i번째 요소와 임의의 요소에 저장된 값을 서로 바꿔서 값을 섞는다.
+        // 0번째 부터 5번재 요소까지 모두 6개만 바꾼다.
+        for(int i = 0; i < 6; i++) {
+            j = (int)(Math.random() * 45); // 0~44범위의 임의의 값을 얻는다.
+            tmp = ball[i];
+            ball[i] = ball[j];
+            ball[j] = tmp;
+            System.out.println(Arrays.toString(ball));
+        }
+
+        //배열 ball의 앞에서부터 6개의 요소를 출력한다.
+        for (int i = 0; i < 6; i++)
+            System.out.printf("ball[%d]=%d%n", i, ball[i]);
 
     }
 }
