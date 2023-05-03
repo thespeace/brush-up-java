@@ -34,5 +34,15 @@ public class Array06 {
         String tmp = str.substring(1,4); // str에서 index범위 1~4의 문자들을 반환
         System.out.println("substring() : " + tmp);
 
+        // 4. boolean equals (Object obj) : 문자열의 내용이 같은지 확인한다. 같으면 결과는 true, 다르면 false 반환.
+        System.out.println("equals() : " + str.equals("ABCDE"));
+        System.out.println("equals() : " + str.equals("ABCD"));
+
+        // 5. char[] toCharArray() : 문자열을 문자배열(char[])로 변환해서 반환한다.
+        char[] charArray= str.toCharArray();
+        for (int i = 0; i < charArray.length; i++){
+            System.out.println("str.toCharArray(), char["+ i + "] : " + charArray[i]);
+        }
+
     }
 }
