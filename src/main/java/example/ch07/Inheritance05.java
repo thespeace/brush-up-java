@@ -53,19 +53,18 @@ class SuperExChild extends SuperEx{
  *      ** 생성자의 첫 줄에 반드시 생성자를 호출해야 한다. **
  *      그렇지 않으면 컴파일러가 생성자의 첫 줄에 super();를 삽입.
  *          ex)
- *
  *              class Point //extends Object//{   <- 컴파일러에 의해 자동삽입으로 인한 코드는 //해당 처리//
  *                  int x;
  *                  int y;
+ *
  *                  Point(){
  *                      this(0,0); <- 생성자 호출, 조건 만족. 정상 작동.
  *                  }
+ *
  *                  Point(int x, int y){
  *                      //super();//  <- Object(); : 조상 기본 생성자 호출, 컴파일러에 의해 자동삽입. 생성자의 첫 줄에 반디스 생성자 호출 필수!
  *                      this.x = x;
  *                      this.y = y;
  *                  }
- *
  *              }
- *
  */
