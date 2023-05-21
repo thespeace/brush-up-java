@@ -19,6 +19,12 @@ public class Inheritance08 {
          *      2. 메서드  : 인스턴스를 생성하지 않고도 호출이 가능한 static 메서드가 된다.
          *                  static 메서드 내에서는 객체가 필요한 인스턴스 멤버들을 직접 사용할 수 없다.
          *
+         *    - final : 마지막의, 변경될 수 없는
+         *      1. 클래스    : 변경될 수 없는 클래스, 확장될 수 없는 클래스가 된다.
+         *                    그래서 final로 지정된 클래스는 다른 클래스의 조상이 될 수 없다. -> 상속계층도의 제일 마지막에 위치.
+         *      2. 메서드    : 변경될 수 없는 메서드, final로 지정된 메서드는 오버라이딩을 통해 재정의 될 수 없다.
+         *      3. 멤버 변수 : 변수 앞에 final이 붙으면, 값을 변경할 수 없는 상수가 된다.
+         *      4. 지역 변수 : 변수 앞에 fianl이 붙으면, 값을 변경할 수 없는 상수가 된다.
          */
 
     }
@@ -35,5 +41,15 @@ class StaticTest {
 
     static int max(int a, int b) { // 클래스 메서드(static메서드)
         return a > b ? a : b; // 인스턴스 변수/메서드 사용 불가.
+    }
+}
+
+//final 사용 예
+final class FinalText{ // 부모(조상)이 될 수 없는 클래스
+    final int MAX_SIZE = 10; // 값을 변경할 수 없는 멤버변수(상수)
+
+    final int getMaxSize(){ // 오버라이딩(조상 메서드를 덮어쓰는 것) 할 수 없는 메서드(변경불가)
+        final int LV = MAX_SIZE; // 값을 변경할 수 없는 지역변수(상수)
+        return MAX_SIZE;
     }
 }
