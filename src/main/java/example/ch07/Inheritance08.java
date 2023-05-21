@@ -25,6 +25,13 @@ public class Inheritance08 {
          *      2. 메서드    : 변경될 수 없는 메서드, final로 지정된 메서드는 오버라이딩을 통해 재정의 될 수 없다.
          *      3. 멤버 변수 : 변수 앞에 final이 붙으면, 값을 변경할 수 없는 상수가 된다.
          *      4. 지역 변수 : 변수 앞에 fianl이 붙으면, 값을 변경할 수 없는 상수가 된다.
+         *
+         *    - abstract : 추상의, 미완성의
+         *      1. 클래스 : 클래스 내에 추상 메서드가 선언되어 있음을 의미한다.
+         *      2. 메서드 : 선언부만 작성하고 구현부는 작성하지 않은 추상 메서드임을 알린다.
+         *      추상 클래스는 미완성이기 때문에 인스턴스 생성불가.
+         *          ex) AbstractTest a = new AbstractText(); // Error.
+         *      추상 클래스를 상속받아서 완전한 클래스를 만든 후에 객체 생성 가능.
          */
 
     }
@@ -52,4 +59,9 @@ final class FinalText{ // 부모(조상)이 될 수 없는 클래스
         final int LV = MAX_SIZE; // 값을 변경할 수 없는 지역변수(상수)
         return MAX_SIZE;
     }
+}
+
+//abstract 사용 예
+abstract class Abstractest{ // 추상 클래스(추상 메서드를 포함한 클래스)
+    abstract void move(); // 추상 메서드(구현부가 없는 메서드 : 미완성 메서드(선언부 O, 구현부 X))
 }
