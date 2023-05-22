@@ -12,5 +12,14 @@ public class Inheritance09 {
          *      접근 범위 : public > protected > (default) > private
          */
 
+        System.out.println("실습 예시) Inheritance09_Parent, Inheritance09_Child를 통해 접근 제어자 접근 여부 확인.");
+
+        /**
+         *    - 접근 제어자 간단 정리.
+         *      1. private   : 파일 내에서만 접근 가능.
+         *      2. (default) : 폴더 내에서만 접근 가능.
+         *      3. protected : 폴더 + 자식 파일내에서만 접근 가능.
+         *      4. public    : 제한 없음.
+         */
     }
 }
