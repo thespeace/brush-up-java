@@ -1,7 +1,7 @@
 package example.ch07;
 
 /**
- *    - 인터페이스의 개념과 장점
+ *    - 인터페이스의 개념과 장점 1.
  *
  *      interface == inter(~사이) + face(얼굴, 대상).
  *      1.두 대상(객체) 간의 '연결, 대화, 소통'을 돕는 '중간 역할'을 한다.
@@ -17,6 +17,7 @@ package example.ch07;
  *          코드를 보다 변경에 유리하고 유연한 코드가 된다.
  *
  *      3.인터페이스 덕분에 B가 변경되어도 A는 안바꿀 수 있게 된다.(느슨한 결합)
+ *          변경을 최소화할 수 있고, 변경에 유연하게 대처할 수 있게 된다.
  *          ex) A가 B를 사용(A가 B에 의존) : A(User) -> B(Provider)
  *              B를 감싸고 있는 인터페이스로 인해 알갱이인 B가 바뀌어도 인터페이스가 바뀌지 않는 한 A는 코드를 변경하지 않아도 그대로 사용 가능해진다.
  *
@@ -26,25 +27,25 @@ package example.ch07;
 
     // 직접적인 관계의 두 클래스[A-B]
     class A {
-        public void methodA(B b){ b.methodB();}
+        public void methodA(B b){ b.methodB();} // method()의 선언 (선언-구현 분리)
     }
     class B {
-        public void methodB(){ System.out.println("methodB()"); }
+        public void methodB(){ System.out.println("methodB()"); } // method()의 구현 (선언-구현 분리)
     }
 
     // 간접적인 관계의 두 클래스(C-I-D)
     interface I { void methodD();}
     class C{
-        public void methodC(I i){ i.methodD();} // C는 D와 관계 없어졌다, 인터페이스와만 소통한다.
+        public void methodC(I i){ i.methodD();} // C는 D와 관계 없어졌다, 인터페이스와 소통하며 인터페이스를 구현한 객체들만 매개변수로 사용 가능해졌다. 때문에 인터페이스의 알맹이의 변경 및 교체가 자유로워 졌다.
     }
-    class D implements I{
+    class D implements I{ // D클래스가 인터페이스 I를 구현해야 method()의 매개변수로 사용 가능.
         public void methodD(){ System.out.println("methodD()"); }
     }
 
 public class Inheritance20 {
     public static void main(String[] args){
         A a = new A();
-        a.methodA(new B());
+        a.methodA(new B()); // A가 B를 사용(의존)
 
         C c = new C();
         c.methodC(new D());
