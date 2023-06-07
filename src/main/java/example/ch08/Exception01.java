@@ -15,7 +15,16 @@ package example.ch08;
  *
  *      3. 논리적 에러(logical error) : 작성 의도와 다르게 동작.(실행, 프로그램은 정상작동하나 원하는 기능을 하지 않음.)
  *
- *
+ *    - 예외 클래스의 계층 구조
+ *      Object(최고 조상) - Throwalbe(클래스, 모든 오류의 조상) - 1.Error(심각한 오류) - 1-1.OutOfMemoryError 등등..
+ *                                                           2.Exception(미약한 오류) - 2-1.IOException(입출력 에러) : 2와 2-1 클래스들은 사용자의 실수와 같은 외적인 요인에 의해 발생하는 예외.
+ *                                                                                    2-2.ClassNotFoundException(클래스 존재 에러)
+ *                                                                                    2-3.RuntimeException : 2-3과 그 자손 클래스들은 프로그래머의 실수로 발생하는 예외.
+ *                                                                                          2-3-1.ArithmeticException(산술계산예외)
+ *                                                                                          2-3-2.ClassCastException(형변환예외)
+ *                                                                                          2-3-3.NullPointException(Null을 사용하려할때 예외)
+ *                                                                                          2-3-4.IndexOutOfBoundsException(배열범위로 인한 예외) 등등...
+ *                                                                                    2-4. 기타 등등..
  */
 public class Exception01 {
     public static void main(String[] args){
