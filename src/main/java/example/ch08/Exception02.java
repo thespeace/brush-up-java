@@ -27,10 +27,11 @@ public class Exception02 {
     public static void main(String[] args){
         System.out.println(1);
         try{
+//            System.out.println(0/0); // 0은 0으로 나눌 수 없다. 예외 발생 시, catch문 구현부를 실행.
             System.out.println(2);
-            System.out.println(3);
-        }catch(Exception e){
-            System.out.println(4);
+            System.out.println(3); // 위 코드가 예외가 발생한 경우, 예외가 발생한 코드 이후의 코드들은 실행되지 않는다.
+        }catch(Exception e){ // 매개변수의 예외가 발생하면 catch문으로 접근.
+            System.out.println(4); // 예외가 발생하였을때 실행.
         } // try-catch의 끝
         System.out.println(5);
     }
