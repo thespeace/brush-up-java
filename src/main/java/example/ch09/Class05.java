@@ -37,5 +37,34 @@ public class Class05 {
         int length = s.length();
         System.out.println(length);
 
+        /**
+         *    - String 클래스의 생성자와 메서드(4/5)
+         */
+
+        //String[] split(String regex) : 문자열을 지정된 분리자(regex)로 나누어 문자열 배열에 담아 반환한다.
+        String animals = "dog,cat,bear";
+        String[] arr = animals.split(",");
+        System.out.println(arr[0]+","+arr[1]+","+arr[2]);
+
+        //String[] split(String regex, int limit) : 문자열을 지정된 분리자(regex)로 나누어 문자열배열에 담아 반환한다. 단, 문자열 전체를 지정된 수(limit)로 자른다.
+        String[] arr1 = animals.split(",",2);
+        System.out.println(arr1.length); //bear가 빠짐.
+
+        //boolean startsWith(String prefix) : 주어진 문자열(prefix)로 시작하는지 검사한다.
+        String s4 = "java.lang.Object";
+        boolean b1 = s4.startsWith("java");
+        boolean b2 = s4.startsWith("lang");
+        System.out.println(b1);
+        System.out.println(b2);
+
+        //String substring(int begin)
+        //String substring(int begin, int end) : 주어진 시작위치(begin)부터 끝 위치(end) 범위에 포함된 문자열을 얻는다.
+        //                                       이 때, 시작위치의 문자는 범위에 포함되지만, 끝 위치의 문자는 포함되지 않는다.(begin <= x < end)
+        String s5 = "java.lang.Object";
+        String c = s5.substring(10);
+        String p = s5.substring(5,9);
+        System.out.println(c);
+        System.out.println(p);
+
     }
 }
