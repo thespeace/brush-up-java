@@ -1,0 +1,32 @@
+package example.ch09;
+
+public class Class07 {
+    public static void main(String[] args){
+        /**
+         *    - join()과 StringJoiner
+         */
+
+        //join() : 여러 문자열 사이에 구분자를 넣어서 결합한다.
+        String animals = "dog,cat,bear";
+        String[] arr = animals.split(","); // 문자열을 ','를 구분자로 나눠서 배열에 저장
+        String str = String.join("-",arr); // 배열의 문자열을 '-'로 구분해서 결합
+        System.out.println(str);
+
+        /**
+         *    - 문자열과 기본형 간의 변환
+         */
+
+        //숫자를 문자열로 바꾸는 방법
+        int i = 100;
+        String str1 = i +"";            // 편리하다.
+        String str2 = String.valueOf(i);// 속도가 빠르다.
+
+        //문자열을 숫자로 바꾸는 방법
+        int i1 = Integer.parseInt("100"); // "100"을 100으로 변환하는 방법1
+        int i2 = Integer.valueOf("100");  // "100"을 100으로 변환하는 방법2
+        Integer i3 = Integer.valueOf("100"); // 원래는 반환 타입이 Integer
+        System.out.println(i1);
+        System.out.println(i2);
+        System.out.println(i3);
+    }
+}
