@@ -27,5 +27,33 @@ public class Class09 {
         System.out.println(sb4);
         System.out.println(sb5);
 
+
+        /**
+         *    - StringBuffer의 생성자와 메서드(2/4)
+         */
+
+        //int capacity() : StringBuffer인스턴스의 버퍼크기를 알려준다. length()는 버퍼에 담긴 문자열의 길이를 알려준다.
+        StringBuffer sb6 = new StringBuffer(100);
+        sb6.append("abcd");
+        int bufferSize = sb6.capacity();
+        int stringSize = sb6.length();
+        System.out.println("bufferSize : " + bufferSize);
+        System.out.println("stringSize : " + stringSize);
+
+        //char charAt(int index) : 지정된 위치(index)에 있는 문자를 반환한다.
+        StringBuffer sb7 = new StringBuffer("abc");
+        char c = sb7.charAt(2);
+        System.out.println("charAt() : " + c);
+
+        //StringBuffer delete(int start, int end) : 시작위치(start)부터 끝 위치(end) 사이에 있는 문자를 제거한다. 단, 끝 위치의 문자는 제외.
+        StringBuffer sb8 = new StringBuffer("0123456");
+        StringBuffer sb9 = sb8.delete(3, 6);
+        System.out.println(sb8);
+        System.out.println(sb9);
+
+        //StringBuffer deletecharAt(int index) : 지정된 위치(index)의 문자를 제거한다.
+        StringBuffer sb10 = new StringBuffer("0123456");
+        sb10.deleteCharAt(3);
+        System.out.println(sb10);
     }
 }
