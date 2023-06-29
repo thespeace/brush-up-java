@@ -59,5 +59,31 @@ public class Class10 {
         System.out.println("substring(int start) : " + str2);
         System.out.println("substring(int start, int end) : " + str3);
 
+        System.out.println("=======================================================================");
+
+
+        //StringBuffer의 생성자와 메서드 예제.
+        StringBuffer sb11 = new StringBuffer("01");
+        StringBuffer sb22 = sb11.append(23);
+        sb11.append('4').append(56); // 메서드 체이닝.
+        System.out.println(sb11);
+        System.out.println(sb22);
+
+        StringBuffer sb33 = sb11.append(78);
+        sb33.append(9.0);
+        System.out.println(sb33);
+
+        System.out.println("sb11 = " + sb11);
+        System.out.println("sb22 = " + sb22);
+        System.out.println("sb33 = " + sb33);
+
+        System.out.println("sb11.deleteCharAt(10) = " + sb11.deleteCharAt(10));
+        System.out.println("sb11.delete(3, 6) = " + sb11.delete(3, 6));
+        System.out.println("sb11.insert(3, \"abc\") = " + sb11.insert(3, "abc"));
+        System.out.println("sb11.replace(6, sb11.length(), \"END\") = " + sb11.replace(6, sb11.length(), "END"));
+
+        System.out.println("sb11.capacity() = " + sb11.capacity());
+        System.out.println("sb11.length() = " + sb11.length());
+
     }
 }
