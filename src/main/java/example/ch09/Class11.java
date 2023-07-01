@@ -43,5 +43,48 @@ public class Class11 {
         System.out.println(Math.E); // public static final double E = 2.7182818284590452354;   // 자연로그의 밑
         System.out.println(Math.PI); //public static final double PI = 3.14159265358979323846; // 원주율
 
+
+        /**
+         *    - Math 클래스의 메서드(1/2)
+         */
+
+        /**
+         *    static double abs(double a)
+         *    static float abs(float a)
+         *    static int abs(int a)
+         *    static long abs(long a)       : 주어진 값의 절대값을 반환한다.
+         */
+        int i = Math.abs(-10);
+        double d = Math.abs(-10.0);
+        System.out.println("Math.abs(-10) : " + i);
+        System.out.println("Math.abs(-10.0) : " + d);
+
+        //static double ceil(double a) : 주어진 값을 올림하여 반환한다.
+        double d1 = Math.ceil(10.1);
+        double d2 = Math.ceil(-10.1);
+        double d3 = Math.ceil(10.000015);
+        System.out.println("Math.ceil(10.1) : " + d1);
+        System.out.println("Math.ceil(-10.1) : " + d2);
+        System.out.println("Math.ceil(10.000015) : " + d3);
+
+        //static double floor(double a) : 주어진 값을 버림하여 반환한다.
+        double d4 = Math.floor(10.8);
+        double d5 = Math.floor(-10.8);
+        System.out.println("Math.floor(10.8) : " + d4);
+        System.out.println("Math.floor(-10.8) : " + d5);
+
+        /**
+         *    static double max(double a, double b)
+         *    static float max(float a, float b)
+         *    static int max(int a, int b)
+         *    static long max(long a, long b)       : 주어진 두 값을 비교하여 큰 쪽을 반환한다.
+         */
+        double d6 = Math.max(9.5, 9.50001);
+        int i1 = Math.max(0, -1);
+        System.out.println("Math.max(9.5, 9.50001) : "+ d6);
+        System.out.println("Math.max(0, -1) : "+ i1);
+
+
+
     }
 }
