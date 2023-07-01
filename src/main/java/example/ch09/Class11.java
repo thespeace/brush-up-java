@@ -85,6 +85,49 @@ public class Class11 {
         System.out.println("Math.max(0, -1) : "+ i1);
 
 
+        /**
+         *    - Math 클래스의 메서드(2/2)
+         */
 
+        /**
+         *    static double min(double a, double b)
+         *    static float min(float a, float b)
+         *    static int min(int a, int b)
+         *    static long min(long a, long b)       : 주어진 두 값을 비교하여 작은 쪽을 반환한다.
+         */
+        double d7 = Math.min(9.5, 9.50001);
+        int i2 = Math.min(0, -1);
+        System.out.println("Math.min(9.5, 9.50001) : 0.0 <= d < 1.0 = " + d7);
+        System.out.println("Math.min(0. -1) : 1 <= i < 11 = " + i2);
+
+        //static double random() : 0.0~1.0범위의 임의의 double값을 반환한다.(1.0은 범위에 포함되지 않는다)
+        double d8 = Math.random();
+        int i3 = (int)(Math.random()*10)+1;
+        System.out.println("Math.random() : " + d8);
+        System.out.println("(int)(Math.random()*10)+1 : " + i3);
+
+        //static double rint(double a) : 주어진 double값과 가장 가까운 정수값을 double형으로 반환한다. 단, 두 정수의 정가운데 있는 값(1.5, 2.5, 3.5 등)은 짝수를 반환.
+        double dr = Math.rint(1.2);
+        double dr1 = Math.rint(2.6);
+        double dr2 = Math.rint(3.5);
+        double dr3 = Math.rint(4.5);
+        System.out.println("Math.rint(1.2) : " + dr);
+        System.out.println("Math.rint(2.6) : " + dr1);
+        System.out.println("Math.rint(3.5) : " + dr2);
+        System.out.println("Math.rint(4.5) : " + dr3);
+
+        //static long round(double a) || static long round(float a)
+        long l = Math.round(1.2);
+        long l1 = Math.round(2.6);
+        long l2 = Math.round(3.5);
+        long l3 = Math.round(4.5);
+        double d9 = 90.7552;
+        double d10 = Math.round(d9*100)/100.0;
+        System.out.println("Math.round(1.2) : " + l);
+        System.out.println("Math.round(2.6) : " + l1);
+        System.out.println("Math.round(3.5) : " + l2);
+        System.out.println("Math.round(4.5) : " + l3);
+        System.out.println("Math.round(4.5) : " + l3);
+        System.out.println("Math.round(90.7552*100)/100.0; : " + d10);
     }
 }
