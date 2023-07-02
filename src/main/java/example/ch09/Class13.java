@@ -20,13 +20,58 @@ public class Class13 {
          *      }
          */
 
+        //기본형 boolean
+        Boolean b = new Boolean(true); // Boolean(boolean value)
+        Boolean b2 = new Boolean("true"); // Boolean(String s)
+
+        //기본형 char
+        Character c = new Character('a'); // Charactor(char value)
+
+        //기본형 byte
+        Byte b3 = new Byte(10); // Byte(byte value)
+        Byte b4 = new Byte("10"); // Byte(String s)
+
+        //기본형 short
+        Short s = new Short(10); // Short(short value)
+        Short s2 = new Short("10"); // Short(String s)
+
+        //기본형 int
+        Integer i = new Integer(100); // Integer(int value)
+        Integer i2 = new Integer("100"); // Integer(String s)
+
+        //기본형 long
+        Long l = new Long(100); // Long(long value)
+        Long l2 = new Long("100"); // Long(STring s)
+
+        //기본형 float
+        Float f = new Float(1.0); // Float(double value)
+        Float f2 = new Float(1.0f); // Float(folat value)
+        Float f3 = new Float("1.0f"); // Float(String s)
+
+        //기본형 double
+        Double d = new Double(1.0); // Double(double value)
+        Double d2 = new Double("1.0"); // Double(String s)
+
+
         //래퍼 클래스 예제.
         Integer i = new Integer(100);
         Integer i2 = new Integer(100);
-        System.out.println("i==i2 ? " + (i == i2));
-        System.out.println("i.equals(i2) ? " + i.equals(i2));
-        System.out.println("i.compareTo(i2) ? " + i.compareTo(i2));
-        System.out.println("i.toString() ? " + i.toString());
+        System.out.println("i==i2 ? " + (i == i2)); // 주소 비교.
+        System.out.println("i.equals(i2) ? " + i.equals(i2)); // 값 비교.
+        System.out.println("i.compareTo(i2) ? " + i.compareTo(i2)); //같으면 0, 작으면 양수, 크면 음수 반환.
+        System.out.println("i.toString() ? " + i.toString()); // 문자열 반환.
 
+        System.out.println("MAX_VALUE="+Integer.MAX_VALUE); // 최댓값.
+        System.out.println("MIN_VALUE="+Integer.MIN_VALUE); // 최소값.
+        System.out.println("SIZE="+Integer.SIZE+" bits"); // bits 반환.
+        System.out.println("BYTES="+Integer.BYTES+" bytes"); // byte 반환.
+        System.out.println("TYPE="+Integer.TYPE); // 타입 반환.
+
+        /**
+         *    - Number클래스
+         *      모든 숫자 래퍼 클래스의 조상.
+         *          자식 래퍼 클래스 -> Byte, Short, Integer, Long, Float, Double, BigInteger(아주 큰 정수), BigDecimal(아주 큰 실수)
+         *      추상 클래스로, 래퍼 클래스와 반대로 래퍼 객체의 값을 기본형으로 바꿀때쓰는 메서드들을 가지고 있다. ex) intValue(), longValue() ...
+         */
     }
 }
