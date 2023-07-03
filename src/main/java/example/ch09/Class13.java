@@ -28,11 +28,11 @@ public class Class13 {
         Character c = new Character('a'); // Charactor(char value)
 
         //기본형 byte
-        Byte b3 = new Byte(10); // Byte(byte value)
+        //Byte b3 = new Byte(10); // Byte(byte value)
         Byte b4 = new Byte("10"); // Byte(String s)
 
         //기본형 short
-        Short s = new Short(10); // Short(short value)
+        //Short s = new Short(10); // Short(short value)
         Short s2 = new Short("10"); // Short(String s)
 
         //기본형 int
