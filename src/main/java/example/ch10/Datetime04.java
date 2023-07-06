@@ -3,6 +3,36 @@ package example.ch10;
 import java.util.Calendar;
 
 public class Datetime04 {
+    /**
+     *    - clear()는 Calendar 객체의 모든 필드를 초기화.
+     *      {@code
+     *          Calendar dt = Calendar.getInstance();
+     *
+     *          // Tue Aug 29 07:13:03 KST 2017
+     *          System.out.println(new Date(dt.getTimeInMillis()));
+     *
+     *          dt.clear(); // 모든 필드를 초기화
+     *          // Thu Jan 01 00:00:00 KST 1970 - Epoch Time.
+     *          System.out.println(new Date(dt.getTimeInMillis()));
+     *      }
+     *
+     *      claer(int field)는 Calendar 객체의 특정 필드를 초기화.
+     *      {@code
+     *          Calendar dt = Calendar.getInstance();
+     *
+     *          // Tue Aug 29 07:13:03 KST 2017
+     *          System.out.println(new Date(dt.getTimeInMillis()));
+     *
+     *          dt.clear(Calendar.SECOND);      // 초를 초기화
+     *          dt.clear(Calendar.MINUTE);      // 분을 초기화
+     *          dt.clear(Calendar.HOUR_OF_DAY); // 시간을 초기화
+     *          dt.clear(Calendar.HOUR);        // 시간을 초기화
+     *
+     *          // Tue Aug 29 00:00:00 KST 2017
+     *          System.out.println(new Date(dt.getTimeInMillis()));
+     *      }
+     */
+
     //예제 3) 메서드 활용해 날짜 일 수 차이 구하기.
     static int getDayDiff(String yyyymmdd1, String yyyymmdd2) {
         int diff = 0;
