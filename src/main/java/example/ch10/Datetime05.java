@@ -87,4 +87,22 @@ public class Datetime05 {
     public static String toString(Calendar date) {
         return date.get(Calendar.YEAR)+"년 "+(date.get(Calendar.MONTH) +1)+"월 "+date.get(Calendar.DATE)+"일 ";
     }
+
+    /**
+     *    - Date와 Calendar간의 변환
+     *      자바는 하위호환성에 대해 신경을 많이 써주기 때문에, 발전 속도는 느리지만 안정성이라는 큰 장점을 가진 언어이다. 따라서 deprecated된 메서드도 사용이 가능하다.
+     *      Calendar클래스의 단점을 보완한 새로운 time클래스가 나온지 6년이 지났지만 아직도 Calendar클래스를 사용하는 회사가 많은 만큼, Date의 메서드는 대부분 deprecated되었지만 여전히 사용되고 있다.
+     *      따라서 변환하는 방법을 알아두는 것이 좋을 것이다.
+     *
+     *      1. Calendar를 Date로 변환
+     *          Calendar cal = Calendar.getInstance();
+     *              ...
+     *          Date d = new Date(cal.getTimeInMillis()); // Date(long date)
+     *
+     *      2. Date를 Calendar로 변환
+     *          Date d = new Date();
+     *              ...
+     *          Calendar cal = Calendar.getInstance();
+     *          cal.setTime(d);
+     */
 }
