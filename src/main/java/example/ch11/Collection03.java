@@ -51,6 +51,8 @@ public class Collection03 {
          */
 
 
+         System.out.println("=================Example1=================");
+
          // 기본 길이(용량, capacity)가 10인 ArrayList를 생성.
          ArrayList list1 = new ArrayList(10);
          //list1.add(5); // ArrayList는 객체배열을 뜻하니 원래는 객체만 저장 가능하다.
@@ -123,4 +125,11 @@ public class Collection03 {
         System.out.println();
     }
 
+     /**
+      *   - ArrayList에 저장된 객체의 삭제 과정 시 주의점.
+      *     1. 첫번째부터 삭제 (배열복사 발생)
+      *     2. 마지막부터 삭제 (배열복사 안해서 빠르다.)
+      *
+      *     따라서, ArrayList에 저장된 객체를 삭제할 때, list.size()-1 로 삭제해야 배열복사가 안 생기고 더 빠르고 안전하게 요소를 제거할 수 있다.
+      */
 }
