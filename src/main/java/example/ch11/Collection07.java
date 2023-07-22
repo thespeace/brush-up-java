@@ -77,5 +77,17 @@ public class Collection07 {
 
 
 
+        /**
+         *    - Map과 Iterator
+         *      Map은 Collection의 자손이 아니기때문에, iterator()메서드가 없다.
+         *      keySet(), entrySet(), values()를 호출해서 Collection 객체를 얻은 후 iterator()을 호출해야 한다.
+         */
+
+        Map map = new HashMap();
+        /*Set eSet = map.entrySet();
+        Iterator it = eSet.iterator();*/
+        Iterator it = map.entrySet().iterator();
+
+
     }
 }
