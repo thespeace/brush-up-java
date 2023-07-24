@@ -75,5 +75,23 @@ public class Collection08 {
         System.out.println(Arrays.equals(str2D, str2D2));     // false.
         System.out.println(Arrays.deepEquals(str2D, str2D2)); // true.
 
+
+        /**
+         *    - Arrays(4/4)
+         *      asList(Object... a)
+         */
+
+        // 7. 배열을 List로 변환 - asList(Object... a) / Object... : 가변 매개변수.
+        List list = Arrays.asList(new Integer[]{1,2,3,4,5}); // list = [1, 2, 3, 4, 5], 배열을 리스트로 반환.
+        System.out.println(list);
+        List list1 = Arrays.asList(1,2,3,4,5); // list1 = [1, 2, 3, 4, 5], 숫자 나열을 리스트로 반환.
+        // list1.add(6); // List는 읽기 전용이기 때문에, UnsupportedOperationException 예외 발생.
+
+        // 때문에 아래 코드처럼 리스트를 새로운 ArrayList를 만들어주면 변경 가능하다.
+        List list2 = new ArrayList(Arrays.asList(1,2,3,4,5));
+        list2.add(6);
+        System.out.println(list2);
+
+        System.out.println("to be continue.. parallelXXX(), spliterator(), stream() -> ch14");
     }
 }
