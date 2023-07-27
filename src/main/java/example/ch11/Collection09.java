@@ -24,7 +24,8 @@ public class Collection09 {
          *          }
          *      }
          *
-         *          + 정렬을 해주는 sort()와 같은 점 : 프로세스(1.두 대상을 비교 2.자리 바꿈 3.반복)
+         *          + 정렬을 해주는 sort()와 같은 점 : 프로세스(1.두 대상을 비교 2.자리 바꿈 3.반복)는 불변.
+         *          + 정렬을 해주는 sort()와 다른 점 : Comparator은 가변성 정렬 기준 제공.
          *
          *      compare()와 compareTo()는 두 객체의 비교결과를 반환하도록 작성.
          *
@@ -70,3 +71,63 @@ class Descending implements Comparator { // Comparator 인터페이스 구현.
         return -1;
     }
 }
+
+/**
+ *    - Integer와 Comparable
+ *
+ *      Integer클래스의 실제 코드.
+ *      {@code
+ *          public final class Integer extends Number implements Comparable { // Comparable : 기본 정렬 기준 제공. String,Float클래스도 마찬가지로 기본 정렬 기준 제공을 가지고 있다.
+ *              ...
+ *              public int compareTo(Object o) {
+ *                  return compareTo((Integer)o);
+ *              }
+ *
+ *              //Arrays.sort()와 같은 메서드가 정렬을 수행하는 과정에서, compareTo()를 호출한다.
+ *              public int compareTo(Integer anotherInteger){ // 기본 정렬 기준 제공 메서드.
+ *                  int thisVal = this.value;
+ *                  int anotherVal = anotherInteger.value;
+ *
+ *                  //비교하는 값이 크면 -1, 같으면 0, 작으면 1을 반환한다.
+ *                  return (thisVal<anotherVal ? -1 : (thisVal==anotherVal ? 0 : 1));
+ *                  // return thisVal - anotherVal; // 내림 차순의 경우 반대로 뺄셈하면 된다. 간단함에도 불구하고 삼항연산자를 쓴 이유는 성능상 아주 약간 유리하기 때문이다.
+ *              }
+ *              ...
+ *          }
+ *      }
+ *
+ *      버블 정렬 코드.
+ *      {@code
+ *          static void sort(int[] intArr) {
+ *              for(int i=0; i<intArr.length-1; i++){
+ *                  for(int j=0; j<intArr.length-1-i; j++){     // 버블 정렬 로직은 불변.
+ *                      int tmp = 0;
+ *
+ *                      if(intArr[j] > intArr[j+1]){            // 1.두 값 비교.
+ *                          tmp = intArr[j];                    // 2.자리 바꿈.
+ *                          intArr[j] = intArr[j + 1];          // 정렬 기준은 가변.
+ *                          intArr[j+1] = tmp;
+ *                      }
+ *                  }
+ *              }
+ *          }
+ *      }
+ *
+ *      비교 기준만 신경쓰면 되는 극도로 효율적인 코드.
+ *      {@code
+ *          static void sort(Object[] objArr, Comparator c) {   // objArr : 정렬 대상, c : 정렬 기준.
+ *              for(int i=0; i<objArr.length-1; i++){
+ *                  for(int j=0; j<objArr.length-1-i; j++){
+ *                      Object tmp = null;
+ *
+ *                      if(c.compare(objArr[j], objArr[j+1]) > 0){ // 가져온 정렬기준으로 비교.
+ *                          tmp = objArr[j];
+ *                          objArr[j] = objArr[j + 1];
+ *                          objArr[j+1] = tmp;
+ *                      }
+ *                  }
+ *              }
+ *          }
+ *      }
+ *
+ */
