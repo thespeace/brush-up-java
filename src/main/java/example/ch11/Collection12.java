@@ -42,5 +42,95 @@ public class Collection12 {
          *           9. 4보다 크니 4의 오른쪽에 저장.
          *              * 요소(node)를 저장해가면서 비교횟수는 점점 늘어나서 저장에 더 시간이 많이 걸린다. == 이진트리의 단점.
          */
+
+        /**
+         *    - TreeSet의 주요 생성자와 메서드.(Collection 인터페이스의 주요 메서드 제외)
+         */
+
+        // TreeSet() : 기본 생성자.
+        TreeSet ts = new TreeSet();
+
+        // TreeSet() : 주어진 컬렉션을 저장하는 TreeSet을 생성
+        TreeSet ts1 = new TreeSet(Arrays.asList(60, 30, 45, 35));
+        System.out.println("ts1 : " + ts1);
+
+        // TreeSet(Comparator comp) : 주어진 정렬기준(비교 기준)으로 정렬하는 TreeSet을 생성. <-> 비교기준이 없을 경우, 기본 비교기준 적용.
+        TreeSet ts2 = new TreeSet(new TestComparator());
+
+        // Object first() : 정렬(오름차순)된 순서에서 첫 번째 객체를 반환한다.
+        ts1.first();
+        System.out.println("ts1.first() : " + ts1.first());
+
+        // Object last() : 정렬(오름차순)된 순서에서 마지막 객체를 반환한다.
+        ts1.last();
+        System.out.println("ts1.last() : " + ts1.last());
+
+        // Object ceiling(Object o) : 지정된 객체와 같은 객체를 반환, 없으면 큰 값을 가진 객체 중 제일 가까운 값의 객체를 반환, 없으면 Null.
+        ts1.ceiling(42);
+        System.out.println("ts1.ceiling(42) : " + ts1.ceiling(42));
+
+        // Object floor(Object o) : 지정된 객체와 같은 객체를 반환. 없으면 작은 값을 가진 객체 중 제일 가까운 값의 객체를 반환, 없으면 Null.
+        ts1.floor(42);
+        System.out.println("ts1.floor(42) : " + ts1.floor(42));
+
+        // Object higher(Object o) : 지정된 객체보다 큰 값을 가진 객체 중 제일 가까운 값의 객체를 반환, 없으면 Null.
+        ts1.higher(45);
+        System.out.println("ts1.higher(45) : " + ts1.higher(45));
+
+        // Object lower(Object o) : 지정된 객체보다 작은 값을 가진 객체 중 제일 가까운 값의 객체를 반환, 없으면 Null.
+        ts1.lower(45);
+        System.out.println("ts1.lower(45) : " + ts1.lower(45));
+
+        // SortedSet subSet(Object fromElement, Object toElement) : 범위 검색(fromElement와 toElement사이)의 결과를 반환한다.(끝 범위인 toElement는 범위에 포함되지 않음)
+        ts1.subSet(20,50);
+        System.out.println("ts1.subSet(20,50) : " + ts1.subSet(20,50));
+
+        // SortedSet headSet(Object toElement) : 지정된 객체보다 작은 값의 객체들을 반환한다.
+        ts1.headSet(45);
+        System.out.println("ts1.headSet(45) : " + ts1.headSet(45));
+
+        // SortedSet tailSet(Object fromElement) : 지정된 객체보다 큰 값의 객체들을 반환한다.
+        ts1.tailSet(35);
+        System.out.println("ts1.tailSet(35) : " + ts1.tailSet(35));
+
+
+        System.out.println("\n==============예제 1(1~45사이의 정수를 난수로 골라서 set에 저장해서 출력)=============");
+
+        Set set = new TreeSet(); // 범위 검색, 정렬에 유리. 따로 정렬 필요없음.
+
+        for(int i = 0; set.size() < 6; i++){
+            int num = (int)(Math.random()*45) + 1;
+            set.add(num); // set.add(new Integer(num));
+        }
+
+        System.out.println(set);
+
+        System.out.println("==============예제 2(정렬 비교 기준이 필수인 TreeSet의 정렬 기준 두 가지(Comparable VS Comparator))=============");
+
+        Set setTest = new TreeSet();
+        setTest.add(new Test()); // 1. 저장하는 객체가 비교 기준을 가지고 있다.
+        System.out.println(setTest);
+
+        Set setTestComp = new TreeSet(new TestComparator()); // 2. TreeSet이 정렬기준을 갖게 한다.
+        setTestComp.add(new Test());
+        setTestComp.add(new Test());
+        setTestComp.add(new Test());
+        setTestComp.add(new Test());
+        System.out.println(setTestComp);
+
+    }
+}
+class Test implements Comparable { // Comparable을 갖고있는 객체.(주어진 객체(o)를 자신(this)과 비교)
+    @Override
+    public int compareTo(Object o) {
+        return 1;
+    }
+}
+
+class TestComparator implements Comparator { //
+
+    @Override
+    public int compare(Object o, Object t1) {
+        return 1;
     }
 }
