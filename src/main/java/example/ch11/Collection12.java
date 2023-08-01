@@ -94,6 +94,7 @@ public class Collection12 {
         System.out.println("ts1.tailSet(35) : " + ts1.tailSet(35));
 
 
+
         System.out.println("\n==============예제 1(1~45사이의 정수를 난수로 골라서 set에 저장해서 출력)=============");
 
         Set set = new TreeSet(); // 범위 검색, 정렬에 유리. 따로 정렬 필요없음.
@@ -105,21 +106,69 @@ public class Collection12 {
 
         System.out.println(set);
 
-        System.out.println("==============예제 2(정렬 비교 기준이 필수인 TreeSet의 정렬 기준 두 가지(Comparable VS Comparator))=============");
+
+
+        System.out.println("\n==============예제 2(정렬 비교 기준이 필수인 TreeSet의 정렬 기준 두 가지(Comparable VS Comparator))=============");
 
         Set setTest = new TreeSet();
         setTest.add(new Test()); // 1. 저장하는 객체가 비교 기준을 가지고 있다.
+        setTest.add(new Test());
+        // setTest.add(new Integer(num)); // Integer Class는 Comparable를 구현해서 정렬기준을 가지고 있기 때문에 바로 사용 가능하다.
         System.out.println(setTest);
 
-        Set setTestComp = new TreeSet(new TestComparator()); // 2. TreeSet이 정렬기준을 갖게 한다.
+        Set setTestComp = new TreeSet(new TestComparator()); // 2. TreeSet이 어떠한 정렬기준을 갖게 한다.
         setTestComp.add(new Test());
         setTestComp.add(new Test());
         setTestComp.add(new Test());
         setTestComp.add(new Test());
         System.out.println(setTestComp);
 
+
+
+        System.out.println("\n==============예제 3(범위 검색, b~d사이의 단어들만 출력(전체 집합에서 부분 집합을 골라내기.))=============");
+        TreeSet set2 = new TreeSet();
+        String from = "b";
+        String to	= "d";
+
+        set2.add("abc");      set2.add("alien");    set2.add("bat");
+        set2.add("car");      set2.add("Car");      set2.add("disc");
+        set2.add("dance");    set2.add("dZZZZ");    set2.add("dzzzz");
+        set2.add("elephant"); set2.add("elevator"); set2.add("fan");
+        set2.add("flower");
+
+        System.out.println(set2);
+        System.out.println("range search : from " + from  +" to "+ to);
+        System.out.println("result1 : " + set2.subSet(from, to)); // subSet("b","d") : b~d사이 단어 출력.
+        System.out.println("result2 : " + set2.subSet(from, to + "zzz"));
+
+
+
+        System.out.println("\n==============예제 4(50보다 큰 값, 작은 값 구하기.)=============");
+        TreeSet set3 = new TreeSet();
+        int[] score = {80, 95, 50, 35, 45, 65, 10, 100};
+
+        for(int i=0; i < score.length; i++)
+            set3.add(new Integer(score[i]));
+
+        // TreeSet에만 존재하는 메서드 사용, 참조변수의 타입을 부모타입의 Set타입으로 바꿀 수 없다.
+        System.out.println("50보다 작은 값 :" + set3.headSet(new Integer(50)));
+        System.out.println("50보다 큰 값 :"  + set3.tailSet(new Integer(50)));
+        System.out.println("40과 80사이의 값 :"  + set3.subSet(new Integer(40),new Integer(80)));
+
+        /**
+         *    + 트리 순회(tree traversal)
+         *      이진 트리의 모든 노드를 한번씩 읽는 것을 트리 순회라고 한다.
+         *          1. 전위순회(preOrder)   : 부모 노드를 읽고 자식 노드를 읽는 것.
+         *          2. 후위순회(postOrder)  : 자식 노드를 먼저 읽고 나중에 부모 노드를 읽는 것.
+         *          3. 중위순회(inOrder)    : 부모 노드를 가운데 두고 왼쪽 자식 노드를 먼저 읽고, 다음으로 부모 노드를 읽고, 마지막으로 오른쪽 자식 노드를 읽는 것.
+         *          4. 레벨순회(levelOrder) : 위에서부터 한 층씩 읽는 것.
+         *
+         *      전위, 중위, 후위 순회법이 있으며, 중위 순회하면 오름차순으로 정렬된다.(이러한 특성때문에 정렬에 유리한 것.)
+         *          <-> 반면 트리가 커지면 추가, 삭제에 시간이 오래 걸린다.
+         */
     }
 }
+
 class Test implements Comparable { // Comparable을 갖고있는 객체.(주어진 객체(o)를 자신(this)과 비교)
     @Override
     public int compareTo(Object o) {
@@ -127,8 +176,7 @@ class Test implements Comparable { // Comparable을 갖고있는 객체.(주어�
     }
 }
 
-class TestComparator implements Comparator { //
-
+class TestComparator implements Comparator {
     @Override
     public int compare(Object o, Object t1) {
         return 1;
