@@ -2,6 +2,10 @@ package example.ch12;
 
 import java.util.ArrayList;
 
+class Product1 {}
+class Tv1 extends Product1 {}
+class Audio1 extends Product1 {}
+
 public class Generics03 {
     public static void main(String[] args){
         /**
@@ -35,10 +39,43 @@ public class Generics03 {
          *
          *      지네릭 클래스간의 다형성은 성립.(여전히 대입된 타입은 일치해야)
          *      {@code
-         *
+         *          List<Tv> list = new ArrayList<Tv>(); // OK. 다형성, ArrayList(자손)가 List(조상)를 구현.
+         *          List<Tv> list = new LinkedList<Tv>(); // OK. 다형성, LinkedList(자손)가 List(조상)를 구현.
          *      }
          *
+         *      매개변수의 다형성도 성립.
+         *      {@code
+         *          ArrayList<Product> list = new ArrayList<Product>();
+         *          list.add(new Product());
+         *          list.add(new Tv());      // OK, Product 자손.
+         *          list.add(new Audio());   // OK, Product 자손.
+         *
+         *          //Product 클래스와 그 자손 객체 사용 가능.
+         *          boolean add(E e) { ... }    -->     boolean add(Product e) { ... }
+         *
+         *          Product p = list.get(0);
+         *          Tv t = (Tv)list.get(1); // Product타입의 자손이어도 형변환은 필요하다.
+         *      }
          */
 
+        ArrayList<Product1> productList = new ArrayList<Product1>();
+        ArrayList<Tv1>      tvList = new ArrayList<Tv1>();
+//  	ArrayList<Product1> tvList = new ArrayList<Tv1>(); // 에러, 대입된 제네릭 타입이 다르다.(조상 - 자손이어도 불가)
+// 		List<Tv1>           tvList = new ArrayList<Tv1>(); // OK. 다형성
+
+        productList.add(new Tv1());     // public boolean add(Product e) { ... } : 다형성, 해당 타입과 그의 자손들도 OK.
+        productList.add(new Audio1());
+
+        tvList.add(new Tv1());
+//        tvList.add(new Audio1()); // ERROR, Tv1과 그의 자손만 사용 가능.
+
+        printAll(productList);
+//        printAll(tvList); // 컴파일 에러가 발생한다, 참조변수에 대입된 <Product1>하고 생성자에 대입된 타입이 불일치하기 때문.
     }
+
+    public static void printAll(ArrayList<Product1> list) {
+        for (Product1 p : list)
+            System.out.println(p);
+    }
+
 }
