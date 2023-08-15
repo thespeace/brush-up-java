@@ -129,4 +129,3 @@ public class Enums01 {
             System.out.printf("%s=%d%n", d.name(), d.ordinal()); // 이름과 순서(값과 무관) 출력.
     }
 }
-열거형 기초
