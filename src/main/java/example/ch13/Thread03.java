@@ -21,10 +21,10 @@ public class Thread03 {
         th2.start();
         startTime = System.currentTimeMillis();
 
-        /*try{            // join() : 이 메서드는 다른 쓰레드가 하는일을 기다린다.
+        try{            // join() : 이 메서드는 다른 쓰레드가 하는일을 기다린다.
             th1.join(); // main쓰레드가 th1의 작업이 끝날 때까지 기다린다.
-            th2.join(); // main쓰레드가 th2의 작업이 끝날 때까지 기다린다.
-        }catch (InterruptedException e){ }*/
+            th2.join(); // main쓰레드가 th2의 작업이 끝날 때까지 기다린다. 또한 메인 메서드가 종료되어도 다른 쓰레드가 실행중이면 프로그램은 종료되지 않는다.
+        }catch (InterruptedException e){ }
 
         System.out.println("소요시간 : " + (System.currentTimeMillis() - startTime));
     }
