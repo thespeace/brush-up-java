@@ -27,5 +27,25 @@ public class Stream02 {
         IntStream intStream = new Random().ints(1,46); // 1~45범위의 무한 스트림.
         intStream.distinct().limit(6).sorted()      // 중간 연산(중복제거 + 자르기 + 정렬).
                 .forEach(i->System.out.print(i+",")); // 최종 연산(출력).
+
+
+
+        /**
+         *    - 스트림(Stream)의 특징 (2/3)
+         *      스트림은 작업을 내부 반복으로 처리한다.
+         *      {@code
+         *          for(String str : strList)       ->      stream.forEach(System.out::println);    // 성능은 비효율적이지만 코드가 간결해진다.
+         *              System.out.println(str);
+         *      }
+         *      {@code : for문을 메서드안에 넣은 것.
+         *          void forEach(Consumer<? super T> action) {
+         *              Objects.requireNonNull(action); // 매개변수의 널 체크
+         *              for(T t : src) //내부 반복(for문을 메서드 안으로 넣음)
+         *                  action.accept(T);
+         *          }
+         *      }
+         */
+
+
     }
 }
