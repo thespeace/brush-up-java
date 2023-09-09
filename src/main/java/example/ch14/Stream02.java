@@ -47,5 +47,24 @@ public class Stream02 {
          */
 
 
+        /**
+         *    - 스트림(Stream)의 특징 (3/3)
+         */
+        //스트림의 작업을 병렬로 처리 : 병렬스트림(멀티쓰레드)
+        Stream<String> strStream2 = Stream.of("dd", "aaa","CC","cc","b");
+        int sum = strStream2.parallel() // 병렬 스트림으로 전환(속성만 변경)
+                .mapToInt(a->a.length()).sum(); // 모든 문자열의 길이의 합.
+        System.out.println(sum);
+/**
+ *      기본형 스트림 : IntStream, LongStream, DoubleStream
+ *
+ *      오토박싱&언박싱의 비효율이 제거됨.(Stream<Integer> 대신 IntStream사용), 성능면에서 유리.
+ *          오토박싱 : 기본형 -> 참조형.
+ *          언박싱 : 참조형 -> 기본형.
+ *
+ *      숫자와 관련된 유용한 메서드를 Stream<T>보다 더 많이 제공한다.
+ */
+
+
     }
 }
