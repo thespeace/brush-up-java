@@ -125,5 +125,52 @@ public class Stream03 {
         System.out.println();
         rangeStream2.forEach(System.out::print);
 
+
+
+        /**
+         *    - 스트림 만들기 - 람다식 iterate(), generate().
+         *
+         *      {@code : 람다식을 소스로 하는 무한 스트림 생성하기.
+         *          static <T> Stream<T> iterate(T seed(초기값), UnaryOprator<T> f(람다식)) //이전 요소에 종속적
+         *          static <T> Stream<T> generate(Supplier<T> s(람다식))                   //이전 요소에 독립적
+         *      }
+         *      {@code : iterate()는 이전 요소를 seed로 해서 다음 요소를 계산한다.
+         *          Stream<Integer> evenStream = Stream.iterate(0, n->n+2); // 0, 2, 4, 6 ...(무한 스트림)
+         *          // 초기값과 람다식을 이용해서 이전결과를 이용해서 계속 값을 만들어 낸다.
+         *      }
+         *      {@code : generate()는 초기값을 사용하지 않고 이전 결과하고 관계가 없이 각 요소가 서로 독립적이다.
+         *          Stream<Double> randomStream = Stream.generate(Math::random); // 랜덤값 무한스트림.
+         *          Stream<Integer> oneStream   = Stream.generate(()->1); // 1, 1, 1, 1 ...
+         *      }
+         */
+        System.out.println("==============람다식 스트림 만들기=============");
+        // iterate(T seed, UnaryOperator f(단항 연산자)) : 매개변수(seed) 하나를 넣으면 결과가 하나가 나온다.
+        Stream<Integer> ramdaStream1 = Stream.iterate(1, n -> n+2);
+        ramdaStream1.limit(10).forEach(System.out::println);
+
+        // generate(Supplier s) : 주기만 하는 것. 입력 X, 출력 O
+        Stream<Integer> ramdaStream2 = Stream.generate(()->1);
+        ramdaStream2
+                .limit(10)
+                .forEach(System.out::println);
+
+
+
+        /**
+         *    - 스트림 만들기 - 파일과 빈 스트림.
+         *
+         *      {@code : 파일을 소스로 하는 스트림 생성하기.
+         *          Stream<Path> Files.list(Path dir) // Path는 파일 또는 디렉토리.
+         *          //폴더의 경로를 알려주면 폴더 안에 있는 파일들로 이루어진 스트림을 생성할 수 있다.
+         *
+         *          Stream<String> Files.lines(Path path) // log파일 분석에 유리.
+         *          Stream<String> Files.lines(Path path, Charset cs)
+         *          Stream<String> lines() // BufferedReader클래스의 메서드, 파일의 내용을 라인단위로 String Stream으로 만들어 준다.
+         *      }
+         *      {@code : 비어있는 스트림 생성하기.
+         *          Stream emptyStream = Stream.empty(); // empty()는 빈 스트림을 생성해서 반환한다.
+         *          long count = emptyStream.count(); // count의 값은 0.
+         *      }
+         */
     }
 }
