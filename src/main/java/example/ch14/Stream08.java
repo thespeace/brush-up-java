@@ -41,7 +41,11 @@ public class Stream08 {
          *      {@code : 간단한 예시
          *          boolean hasFailedStu = stuStream.anyMatch(s -> s.getTotalScore() <= 100); // 낙제자가 있는지? 한명이라도 있으면 true.
          *      }
-         *
+         */
+
+
+
+        /**
          *
          *      findFirst(), findAny() : 조건에 일치하는 요소 찾기.
          *
@@ -53,10 +57,34 @@ public class Stream08 {
          *          Optional<Student> result = stuStream.filter(s -> s.getTotalScore() <= 100).findFirst();
          *          Optional<Student> result = parallelStream.filter(s -> s.getTotalScore() <= 100).findAny();
          *      }
-         *
          */
 
-        System.out.println("allMatch(), anyMatch(), noneMatch()");
 
+
+        /**
+         *      ** reduce() : 스트림의 요소를 하나씩 줄여가며 누적연산 수행(accumulate : 누적하다) **
+         *
+         *      {@code
+         *          Optional<T> reduce(BinaryOperator<T> accumulator) // 초기값도 없고, 비어있는 스트림이라면 결과가 NULL일 수 있기때문에 Optional로 반환.
+         *        **T           reduce(T identity, BinaryOperator<T> accumulator)**
+         *          U           reduce(U identity, BiFunction<U,T,U> accumulator, BinaryOperator<U> combiner)
+         *
+         *          * identity    : 초기값
+         *          * accumulator : 이전 연산결과와 스트림의 요소에 수행할 연산
+         *          * combiner    : 병렬처리된 결과를 합치는데 사용할 연산(병렬 스트림)
+         *      }
+         *      {@code : 간단한 예시(count(),sum(),max(),min(), collect()..은 reduce()를 사용해서 만들었다.)
+         *          // int reduce(int identity, IntBinaryOperator op)
+         *          int count = intStream.reduce(0(초기값), (a,b) -> a + 1(수행할 작업));
+         *          int sum   = intStream.reduce(0, (a,b) -> a + b);
+         *          int max   = intStream.reduce(Integer.MIN_VALUE, (a,b) -> a > b ? a : b);
+         *          int min   = intStream.reduce(Integer.MAX_VALUE, (a,b) -> a < b ? a : b);
+         *
+         *          //reduce()의 내부 작업 구조를 간단하게 풀어보자
+         *          int a = identity;
+         *          for(int b : stream)
+         *              a = a + b; //sum()
+         *      }
+         */
     }
 }
