@@ -1,5 +1,10 @@
 package example.ch14;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -32,11 +37,79 @@ import java.util.stream.Stream;
  *          리듀싱 : reducing()
  *          그룹화와 분할 : groupingBy(), partitioningBy(), collectingAndThen()
  *      }
- *
- *
  */
 
 public class Stream10 {
     public static void main(String[] args){
+
+        /**
+         *    - 스트림을 컬렉션, 배열로 변환.
+         */
+
+        // 스트림을 컬렉션으로 변환(Collectors 제공) : toList(), toSet(), toMap(), toCollection()
+        Stream<Staff> staffStream = Stream.of(
+                new Staff("john",10000),
+                new Staff("kim",12000),
+                new Staff("lee",13000),
+                new Staff("park",15000)
+        );
+
+        //직원 이름이 담긴 리스트로 변환- toList()
+        List<String> names = staffStream.map(Staff::getName) // Stream<Staff> -> Stream<String>
+                .collect(Collectors.toList());               // Stream<String> -> List<String>
+        System.out.println(names);
+
+
+        //리스트를 구현한 특정 클래스를 지정하고 싶다면- toCollection(반환 결과 지정)
+        ArrayList<String> list = names.stream()
+                .collect(Collectors.toCollection(ArrayList::new)); // Stream<String> -> ArrayList<String>
+        System.out.println(list);
+
+
+        //map에 담을 수 있다- toMap(key, value)
+        Stream<Staff> personStream = Stream.of(
+                new Staff("john",10000),
+                new Staff("kim",12000),
+                new Staff("lee",13000),
+                new Staff("park",15000)
+        );
+
+        Map<String,Staff> map = personStream
+                .collect(Collectors.toMap(s->s.getName(), s->s));
+
+        System.out.println(map.get("john"));
+
+
+
+        // 스트림을 배열로 변환 : toArray()
+        Stream<Staff> staffStream2 = Stream.of(
+                new Staff("john",10000),
+                new Staff("kim",12000),
+                new Staff("lee",13000),
+                new Staff("park",15000)
+        );
+        Staff[] arrayStream1 = staffStream2.toArray(Staff[]::new); // OK.
+//        Staff[] arrayStream2 = staffStream2.toArray();           // Error, toArray()의 반환타입이 Object[]타입이여서 형변환을 해주어야 한다. 자동형변환 X.
+//        Staff[] arrayStream2 = (Staff[]) staffStream2.toArray(); // OK, 형변환시 가능.
+//        Object[] arrayStream3 = staffStream2.toArray();          // OK.
+
+        System.out.println(arrayStream1);
+
+    }
+}
+
+class Staff implements Comparable<Staff> {
+    String name;
+    int pay;
+    Staff(String name, int pay) {
+        this.name =name;
+        this.pay =pay;
+    }
+    public String toString() {
+        return String.format("[%s, %d]", name,  pay);
+    }
+    String getName() { return name;}
+    public int compareTo(Staff s) {
+        return s.pay - this.pay;
     }
 }
