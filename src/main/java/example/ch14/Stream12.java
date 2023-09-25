@@ -9,7 +9,7 @@ import static java.util.Comparator.*;
  *    - 스트림의 그룹화와 분할.
  *      Collectors의 메서드.
  *
- *          partitioningBy()는 스트림을 2분할한다.
+ *          partitioningBy() 예제는 스트림을 2분할한다.
  *          {@code
  *              Collector partitioningBy(predicate predicate)
  *              Collector partitioningBy(predicate predicate, Collector downstream)
@@ -113,26 +113,28 @@ public class Stream12 {
             };
 
             System.out.printf("1. 단순분할(성별로 분할)%n");
-            Map<Boolean, List<Student2>> stuBySex =  Stream.of(stuArr)
+            Map<Boolean, List<Student2>> stuBySex =  Stream.of(stuArr) // stuArr -> Stream -> partitioningBy()로 성별로 분할하여 리스트에 담기.
                     .collect(partitioningBy(Student2::isMale));
 
-            List<Student2> maleStudent   = stuBySex.get(true);
-            List<Student2> femaleStudent = stuBySex.get(false);
+            List<Student2> maleStudent   = stuBySex.get(true);  //남학생
+            List<Student2> femaleStudent = stuBySex.get(false); //여학생
 
             for(Student2 s : maleStudent)   System.out.println(s);
             for(Student2 s : femaleStudent) System.out.println(s);
 
+
             System.out.printf("%n2. 단순분할 + 통계(성별 학생수)%n");
             Map<Boolean, Long> stuNumBySex = Stream.of(stuArr)
-                    .collect(partitioningBy(Student2::isMale, counting()));
+                    .collect(partitioningBy(Student2::isMale, counting())); // counting().
 
             System.out.println("남학생 수 :"+ stuNumBySex.get(true));
             System.out.println("여학생 수 :"+ stuNumBySex.get(false));
 
+
             System.out.printf("%n3. 단순분할 + 통계(성별 1등)%n");
             Map<Boolean, Optional<Student2>> topScoreBySex = Stream.of(stuArr)
                     .collect(partitioningBy(Student2::isMale,
-                            maxBy(comparingInt(Student2::getScore))
+                            maxBy(comparingInt(Student2::getScore)) // maxBy().
                     ));
             System.out.println("남학생 1등 :"+ topScoreBySex.get(true));
             System.out.println("여학생 1등 :"+ topScoreBySex.get(false));
@@ -140,7 +142,7 @@ public class Stream12 {
             Map<Boolean, Student2> topScoreBySex2 = Stream.of(stuArr)
                     .collect(partitioningBy(Student2::isMale,
                             collectingAndThen(
-                                    maxBy(comparingInt(Student2::getScore)), Optional::get
+                                    maxBy(comparingInt(Student2::getScore)), Optional::get // Optional::get으로 Optional에 있는걸 꺼내서 Student2에 담기.
                             )
                     ));
 
@@ -150,7 +152,7 @@ public class Stream12 {
             System.out.printf("%n4. 다중분할(성별 불합격자, 100점 이하)%n");
 
             Map<Boolean, Map<Boolean, List<Student2>>> failedStuBySex =
-                    Stream.of(stuArr).collect(partitioningBy(Student2::isMale,
+                    Stream.of(stuArr).collect(partitioningBy(Student2::isMale, // key : value(map(map)) 형태.
                             partitioningBy(s -> s.getScore() <= 100))
                     );
             List<Student2> failedMaleStu   = failedStuBySex.get(true).get(true);
