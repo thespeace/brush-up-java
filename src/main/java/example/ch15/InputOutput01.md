@@ -120,4 +120,3 @@
   | PushbackInputStream                         | PushbackReader                   |
 * Reader, Writer에서도 역시 추상메서드가 아닌 메서드들은 추상메서드를 이용해서 작성되었으며, 프로그래밍적인 관점에서 볼 때 read()를 추상메서드로 하는 것보다 int read(char[] cbuf, int off, int len)을 추상메서드로 하는 것이 더 바람직하다.
 * 바이트기반 스트림과 문자기반 스트림은 이름만 조금 다를 뿐 활용방법은 거의 같다.
-자바에서의 입출력
