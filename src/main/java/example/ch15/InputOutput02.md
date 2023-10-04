@@ -30,4 +30,5 @@
 ### ByteArrayInputStream과 ByteArrayOutputStream
 * 메모리, 즉 바이트배열에 데이터를 입출력 하는데 사용되는 스트림으로 주로 다른 곳에 입출력하기 전에 데이터를 임시로 바이트배열에 담아서 변환 등의 작업을 하는데 사용된다.
 * 주로 사용되지는 않지만 스트림을 이용한 입출력 방법을 보여주는 예제를 작성하기에는 적합.
-    > 예제 : [InputOutput02_Ex01.java](./InputOutput02_Ex01.java)
+    > 예제 : [InputOutput02_Ex01.java](./InputOutput02_Ex01.java)\
+  > 예제 : [InputOutput02_Ex02.java](./InputOutput02_Ex01.java)
