@@ -13,3 +13,6 @@
     | FileOutputStream(File file, boolean<br/>append)  | 파일의 이름을 String이 아닌 File인스턴스로 지정해주어야 하<br/>는 점을 제외하고 FileOutputStream(String name, boolean<br/>append)과 같다.                                    |
     | FileOutputStream(FileDescriptor fdObj)           | 파일 디스크립터(fdObj)로 FileOutputStream을 생성한다.                                                                                                      |
 
+* FileInputStream/FileOutputStream를 이용한 간단한 예제
+  > 파일 읽기 : [FileViewer.java](./FileViewer.java)\
+  > 파일 복사 : [FileCopy.java](./FileCopy.java)
