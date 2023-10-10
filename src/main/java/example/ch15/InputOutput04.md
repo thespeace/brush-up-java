@@ -1,5 +1,5 @@
-## 바이트기반의 보조스트림
-### 1.FilterInputStream과 FilterOutputStream
+# 바이트기반의 보조스트림
+## 1.FilterInputStream과 FilterOutputStream
 * FilterInputStream/FilterOutputStream은 InputStream/OutputStream의 자손이면서 **모든 보조스트림의 조상**이다.
 * 보조스트림은 자체적으로 입출력을 수행할 수 없기 때문에 기반스트림을 필요로 한다.
 * FilterInputStream/FilterOutputStream의 생성자
@@ -31,7 +31,7 @@
     ```
   <br>
 ---
-### 2.BufferedInputStream과 BufferedOutputStream
+## 2.BufferedInputStream과 BufferedOutputStream
 * BufferedInputStream/BufferedOutputStream은 스트림의 입출력 효율을 높이기 위해 버퍼를 사용하는 보조스트림이다.
 * 한 바이트씩 입출력하는것 보다는 버퍼(바이트배열)를 이용해서 한 번에 여러 바이트를 입출력하는 것이 빠르기 때문에 대부분의 입출력 작업에 사용된다.
 * BufferedInputStream의 생성자
@@ -61,3 +61,36 @@
     > BufferedOutputStream의 close()는 flush()를 호출하여 버퍼의 내용을 출력스트림에 쓰도록 한 후, BufferedOutputStream인스턴스의 참조변수에 null을 지정함으로써 사용하던 자원들이 반환되게 한다.
 
   > BufferedOutputStream을 이용한 예제 : [InputOutput04_Ex01.java](./InputOutput04_Ex01.java)
+
+<br>
+---
+## 3.DataInputStream과 DataOutputStream
+* 각각 FilterInputStream/FilterOutputStream의 자손.
+* DataInputStream은 DataInput인터페이스를, DataOutputStream은 DataOutput인터페이스를 각각 구현하였기 때문에, 데이터를 읽고 쓰는데 있어서 byte단위가 아닌, 8가지 기본 자료형의 단위로 읽고 쓸 수 있다는 장점이 있다.
+* DataOutputStream이 출력하는 형식은 각 기본 자료형 값을 16진수로 표현하여 저장한다.
+  > int값을 출력한다면, 4byte의 16진수로 출력된다.
+* 각 자료형의 크기가 다르므로, 출력한 데이터를 다시 읽어 올 때는 출력했을 때의 순서를 염두에 두어야 한다.<br><br>
+* DataInputStream의 생성자와 메서드
+
+    | 메서드 / 생성자                                                                                                                                                                                                                        | 설 명                                                                                                                              |
+    |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+    | DataInputStream(InputStream in)                                                                                                                                                                                                  | 주어진 InputStream인스턴스를 기반스트림으로 하는<br/>DataInputStream인스턴스를 생성한다.                                                                   |
+    | boolean   readBoolean()<br/>byte readByte()<br/>char readChar()<br/>short readShort()<br/>int readInt()<br/>long readLong()<br/>float readFloat()<br/>double readDouble()<br/>int readUnsignedByte()<br/>int readUnsignedShort() | 각 타입에 맞게 값을 읽어 온다.<br/>더 이상 읽을 값이 없으면 EOFException을 발생시킨다.                                                                       |
+    | void readFully(byte[] b)<br/>void readFully(byte[] b, int off, int len)                                                                                                                                                          | 입력스크림에서 지정된 배열의 크기만큼 또는 지정된 위<br/>치에서 len만큼 데이터를 읽어온다. 파일의 끝에 도달하면<br/>EOFException이 발생하고, I/O에러가 발생하면 IOException n<br/>이 발생한다. |
+    | String readUTF()                                                                                                                                                                                                                 | UTF-8형식으로 쓰여진 문자를 읽는다.<br/>더 이상 읽을 값이 없으면 EOFException이 발생한다.                                                                    |
+    | static String readUTF(DataInput in)                                                                                                                                                                                              | 입력스트림(in)에서 UTF-8형식의 유니코드를 읽어온다.                                                                                                 |
+    | int skipBytes(int n)                                                                                                                                                                                                             | 현재 읽고 있는 위치에서 지정된 숫자(n) 만큼을 건너뛴다.                                                                                                |
+
+<br/>
+
+* DataOutputStream의 생성자와 메서드
+
+    | 메서드 / 생성자                                                                                                                                                                                                                                                  | 설 명                                                              |
+    |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+    | DataOutputStream(OutputStream out)                                                                                                                                                                                                                         | 주어진 OutputStream인스턴스를 기반스트림으로 하는<br/>DataOutputStream인스턴스를 생성한다. |
+    | void writeBoolean(boolean b)<br/>void writeByte(int b)<br/>void writeChar(int c)<br/>void writeChars(String s)<br/>void writeShort(int s)<br/>void writeInt(int i)<br/>void writeLong(long l)<br/>void writeFloadt(float f)<br/>void writeDouble(double d) | 각 자료형에 알맞은 값들을 출력한다.                                             |
+    | void writeUTF(String s)                                                                                                                                                                                                                                    | UTF형식으로 문자를 출력한다.                                                |
+    | void writeChars(String s)                                                                                                                                                                                                                                  | 주어진 문자열을 출력한다. writeChar(int c)메서드를 여러<br/>번 호출한 결과와 같다.         |
+    | int size()                                                                                                                                                                                                                                                 | 지금까지 DataOutputStream에 쓰여진 byte의 수를 알려 준<br/>다.                       |
+
+  > DataOutputStream을 이용한 예제 : [InputOutput04_Ex02.java](./InputOutput04_Ex02.java)
