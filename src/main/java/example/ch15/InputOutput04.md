@@ -93,4 +93,5 @@
     | void writeChars(String s)                                                                                                                                                                                                                                  | 주어진 문자열을 출력한다. writeChar(int c)메서드를 여러<br/>번 호출한 결과와 같다.         |
     | int size()                                                                                                                                                                                                                                                 | 지금까지 DataOutputStream에 쓰여진 byte의 수를 알려 준<br/>다.                       |
 
-  > DataOutputStream을 이용한 예제 : [InputOutput04_Ex02.java](./InputOutput04_Ex02.java)
+  > DataOutputStream을 이용한 간단한 예제 : [InputOutput04_Ex02.java](./InputOutput04_Ex02.java)\
+  > DataOutputStream을 이용한 예제 : [InputOutput04_Ex03.java](./InputOutput04_Ex03.java)
