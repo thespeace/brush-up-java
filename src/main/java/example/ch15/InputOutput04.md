@@ -1,5 +1,5 @@
 # 바이트기반의 보조스트림
-## 1.FilterInputStream과 FilterOutputStream
+## 1. FilterInputStream과 FilterOutputStream
 * FilterInputStream/FilterOutputStream은 InputStream/OutputStream의 자손이면서 **모든 보조스트림의 조상**이다.
 * 보조스트림은 자체적으로 입출력을 수행할 수 없기 때문에 기반스트림을 필요로 한다.
 * FilterInputStream/FilterOutputStream의 생성자
@@ -31,7 +31,7 @@
     ```
   <br>
 ---
-## 2.BufferedInputStream과 BufferedOutputStream
+## 2. BufferedInputStream과 BufferedOutputStream
 * BufferedInputStream/BufferedOutputStream은 스트림의 입출력 효율을 높이기 위해 버퍼를 사용하는 보조스트림이다.
 * 한 바이트씩 입출력하는것 보다는 버퍼(바이트배열)를 이용해서 한 번에 여러 바이트를 입출력하는 것이 빠르기 때문에 대부분의 입출력 작업에 사용된다.
 * BufferedInputStream의 생성자
@@ -63,8 +63,9 @@
   > BufferedOutputStream을 이용한 예제 : [InputOutput04_Ex01.java](./InputOutput04_Ex01.java)
 
 <br>
+
 ---
-## 3.DataInputStream과 DataOutputStream
+## 3. DataInputStream과 DataOutputStream
 * 각각 FilterInputStream/FilterOutputStream의 자손.
 * DataInputStream은 DataInput인터페이스를, DataOutputStream은 DataOutput인터페이스를 각각 구현하였기 때문에, 데이터를 읽고 쓰는데 있어서 byte단위가 아닌, 8가지 기본 자료형의 단위로 읽고 쓸 수 있다는 장점이 있다.
 * DataOutputStream이 출력하는 형식은 각 기본 자료형 값을 16진수로 표현하여 저장한다.
@@ -94,4 +95,42 @@
     | int size()                                                                                                                                                                                                                                                 | 지금까지 DataOutputStream에 쓰여진 byte의 수를 알려 준<br/>다.                       |
 
   > DataOutputStream을 이용한 간단한 예제 : [InputOutput04_Ex02.java](./InputOutput04_Ex02.java)\
-  > DataOutputStream을 이용한 예제 : [InputOutput04_Ex03.java](./InputOutput04_Ex03.java)
+  > ByteArrayOutputStream을 사용한 예제 : [InputOutput04_Ex03.java](./InputOutput04_Ex03.java)\
+  > DataInputStream을 사용한 예제 : [InputOutput04_Ex04.java](./InputOutput04_Ex04.java)\
+  > DataOutputStream을 이용한 예제 : [InputOutput04_Ex05.java](./InputOutput04_Ex05.java)\
+  > DataInputStream을 이용한 예제 : [InputOutput04_Ex06.java](./InputOutput04_Ex06.java)\
+  > DataInputStream을 이용한 예제 : [InputOutput04_Ex07.java](./InputOutput04_Ex07.java)
+
+<br>
+
+---
+
+## 4. SequenceInputStream
+* SequenceInputStream은 여러 개의 입력스트림을 연속적으로 연결해서 하나의 스트림으로부터 데이터를 읽는 것과 같이 처리할 수 있도록 도와준다.
+* SequenceInputStream의 생성자를 제외하고 나머지 작업은 다른 입력스트림과 다르지 않다. 큰 파일을 여러 개의 작은 파일로 나누었다가 하나의 파일로 합치는 것과 같은 작업을 수행할 때 사용하면 좋을 것이다.
+  
+  +SequenceInputStream은 다른 보조스트림과는 달리 FilterInputStream의 자손이 아닌 InputStream을 바로 상속받아 구현하였다.<br><br>
+* SequenceInputStream의 생성자
+
+    | 메서드 / 생성자                                               | 설 명                                               |
+    |---------------------------------------------------------|---------------------------------------------------|
+    | SequenceInputStream(Enumeration e)                      | Enumeration에 저장된 순서대로 입력스트림을 하나의 스<br/>트림으로 연결한다. |
+    | SequenceInputStream(InputStream s1,<br/>InputStream s2) | 두 개의 입력스트림을 하나로 연결한다.                             |
+
+<br/>
+
+* Vector에 연결할 입력스트림들을 저장한 다음 Vector의 Enumeration elements()를 호출해서 생성자의 매개변수로 사용한다.
+    ```java
+    // 사용 예 1
+    Vector files = new Vector();
+    files.add(new FileInputStream("file.001"));
+    files.add(new FileInputStream("file.002"));
+    SequenceInputStream in = new SequenceInputStream(files.elements());
+  
+    // 사용 예 2
+    FileInputStream file1 = new FileInputStream("file.001");
+    FileInputStream file2 = new FileInputStream("file.002");
+    SequenceInputStream in = new SequenceInputStream(file1, file2);
+    ```
+
+  > SequenceInputStream을 이용한 간단한 예제 : [InputOutput04_Ex08.java](./InputOutput04_Ex08.java)\
