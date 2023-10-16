@@ -134,3 +134,22 @@
     ```
 
   > SequenceInputStream을 이용한 간단한 예제 : [InputOutput04_Ex08.java](./InputOutput04_Ex08.java)\
+ 
+<br/>
+
+---
+## 5. PrintStream
+* PrintStream은 데이터를 기반스트림에 다양한 형태로 출력할 수 있는 print,println, printf와 같은 메서드를 오버로딩하여 제공한다.
+* PrintStream은 데이터를 적절한 문자로 출력하는 것이기 때문에 문자기반 스트림의 역할을 수행한다. 그래서 JDK1.1에서 부터 PrintStream보다 향상된 기능의 문자기반 스트림인 PrintWriter가 추가되었으나 그 동안 매우 빈번히 사용되면 Systeam.out이 PrintStream이다 보니 둘 다 사용할 수 밖에 없게 되었다.
+* PrintStream과 PrintWriter는 거의 같은 기능을 가지고 있지만 PrintWriter가 PrintStream에 비해 다양한 언어의 문자를 처리하는데 적합하기 때문에 가능하면 PrintWriter를 사용하는 것이 좋다.
+* PrintStream은 우리가 지금까지 알게 모르게 많이 사용해 왔다. System클래스의 static멤버인 out과 err, 즉 System.out, System.err가 PrintStream이다.<br/><br/>
+* PrintStream의 생성자와 메서드
+
+| 생성자 / 메서드 | 설 명 |
+|-----------|-----|
+|           |     |
+|           |     |
+|           |     |
+|           |     |
+|           |     |
+|           |     |
