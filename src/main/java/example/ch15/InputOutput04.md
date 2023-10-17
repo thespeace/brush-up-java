@@ -145,11 +145,98 @@
 * PrintStream은 우리가 지금까지 알게 모르게 많이 사용해 왔다. System클래스의 static멤버인 out과 err, 즉 System.out, System.err가 PrintStream이다.<br/><br/>
 * PrintStream의 생성자와 메서드
 
-| 생성자 / 메서드 | 설 명 |
-|-----------|-----|
-|           |     |
-|           |     |
-|           |     |
-|           |     |
-|           |     |
-|           |     |
+| 생성자 / 메서드                                                                                                                                                                                                                                                                                                        | 설 명                                                                                                                                     |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| PrintStream(File file)<br/>PrintStream(File file, String csn)<br/>PrintStream(OutputStream out)<br/>PrintStream(OutputStream out,<br/>boolean autoFlush)<br/>PrintStream(OutputStream out,<br/>boolean autoFlush, String encoding)<br/>PrintStream(String fileName)<br/>PrintStream(String fileName, String csn) | 지정된 출력스트림을 기반으로 하는 PrintStream인<br/>스턴스를 생성한다. autoFlush의 값을 true로 하면<br/>println메서드가 호출되거나 개행문자가 출력될 때<br/>자동으로 flush된다. 기본값은 false이다. |
+| boolean checkError()                                                                                                                                                                                                                                                                                             | 스트림을 flush하고 에러가 발생했는지를 알려 준다.                                                                                                          |
+| void print(boolean b)<br/>void print(char c)<br/>void print(char[] c)<br/>void print(double d)<br/>void print(float f)<br/>void print(int i)<br/>void print(long l)<br/>void print(Object o)<br/>void print(String s)                                                                                            | 인자로 주어진 값을 출력소스에 문자로 출력한다.<br/>println메서드는 출력 후 줄바꿈을 하고, print메서드<br/>는 줄을 바꾸지 않는다.                                                     |
+| void println()                                                                                                                                                                                                                                                                                                   | 줄바꿈 문자(line separator)를 출력함으로써 줄을<br/>바꾼다.                                                                                              |
+| PrintStream printf(String format, Object... args)                                                                                                                                                                                                                                                                | 정형화된(formatted) 출력을 가능하게 한다.                                                                                                            |
+| protected void setError()                                                                                                                                                                                                                                                                                        | 작업 중에 오류가 발생했음을 알린다.<br/>(setError()를 호출한 후에, checkError()를 호출하<br/>면 true를 반환한다.)                                                      |
+
+* print()나 println()을 이용해서 출력하는 중에 PrintStream의 기반스트림에서 IOException이 발생하면 checkError()를 통해서 인지할 수 있다. println()이나 print()는 예외를 던지지 않고 내부에서 처리하도록 정의하였는데, 그 이유는 println()과 같은 메서드가 매우 자주 사용되는 것이기 때문이다.
+* 만일 println()이 예외를 던지도록 정의되었다면 println()을 사용하는 모든 곳에 try-catch문을 사용해야 할 것이다.
+    ```java
+    public class PrintStream extends FilterOutputStream implements Appendable, Closeable {
+        ...
+        private boolean trouble = false;
+  
+        public void print(int i) {
+            write(String.valueOf(i)); // write(i+"");와 같다.
+        }
+  
+        private void write(String s) {
+            try {
+                ...
+            } catch(IOException x) {
+                trouble = true;
+            }
+        }
+        ...
+        public boolean checkError() {
+            if(out != null) flush();
+            return trouble;
+        }
+    }
+    ```
+  + i+""와 String.valueOf(i)는 같은 결과를 얻지만, String.valueOf(i)가 더 성능이 좋다.
+
+<br>
+
+* printf()는 JDK1.5부터 추가된 것으로, C언어와 같이 편리한 형식화된 출력을 지원하게 되었다.
+* printf()에 사용될 수 있는 옵션은 꽤나 다양한데 그에 대한 자세한 내용은 Java API문서에서 Formatter클래스를 참고하면 된다.
+<br><br>
+* 정수의 출력에 사용될 수 있는 옵션(자주 사용되는 욥션들)
+
+    | format | 설 명                           | 결 과(int i = 65) |
+    |--------|-------------------------------|-----------------|
+    | %d     | 10진수(decimal integer)         | 65              |
+    | %o     | 8진수(octal integer)            | 101             |
+    | %x     | 16진수(hexadecimal integer)     | 41              |
+    | %c     | 문자                            | A               |
+    | %s     | 문자열                           | 65              |
+    | %5d    | 5자리 숫자, 빈자리는 공백으로 채운다.        | 　65             |
+    | %-5d   | 5자리 숫자, 빈자리는 공백으로 채운다.(왼쪽 정렬) | 65              |
+    | %05d   | 5자리 숫자, 빈자리는 0으로 채운다.         | 00065           |
+<br>
+
+* 문자열의 출력에 사용될 수 있는 옵션
+
+    | format | 설 명                            | 결 과(String str = "ABC") |
+    |--------|--------------------------------|-------------------------|
+    | %s     | 문자열(string)                    | ABC                     |
+    | %5s    | 5자리 문자열, 빈자리는 공백으로 채운다.        | 　ABC                     |
+    | %-5s   | 5자리 문자열, 빈자리는 공백으로 채운다.(왼쪽 정렬) | ABC                     |
+<br>
+
+* 실수의 출력에 사용될 수 있는 옵션
+
+    | format | 설 명                                                                                               | 결 과(float f = 1234.56789f) |
+    |--------|---------------------------------------------------------------------------------------------------|----------------------------|
+    | %e     | 지수형태표현(exponent)                                                                                  | 1.234568e+03               |
+    | %f     | 10진수(decimal float)                                                                               | 1234.56789                 |
+    | %3.1f  | 출력될 자리수를 최소 3자리(소수점포함), 소수점 이하 1자리<br/>(2번째 자리에서 반올림)                                             | 1234.6                     |
+    | %8.1f  | 소수점이상 최소 6자리, 소수점 이하 1자리.<br/>출력될 자리수를 최소 8자리(소수점포함)를 확보한다. 빈자리<br/>는 공백으로 채워진다.(오른쪽 정렬)          | 　1234.6                     |
+    | %08.0f | 소수점이상 최소 6자리, 소수점 이하 1자리.<br/>출력될 자리수를 최소 8자리(소수점포함)를 확보한다. 빈자리<br/>는 0으로 채워진다.                   | 001234.6                   |
+    | %-8.1f | 소수점이상 최소 6자리, 소수점 이하 1자리.<br/>출력될 자리수를 최소 8자리(소수점포함)를 확보한다. 빈자리<br/>는 공백으로 채워진다.(왼쪽 정렬) | 1234.6                     |
+<br>
+
+* 특수문자를 출력하는 옵션
+
+    | format | 설 명              |
+    |--------|------------------|
+    | \t     | 탭(tab)           |
+    | %n     | 줄바꿈 문자(new line) |
+    | %%     | %                |
+<br>
+
+* 날짜와 시간의 출력에 사용될 수 있는 옵션
+
+    | format              | 설 명       | 결 과                       |
+    |---------------------|-----------|---------------------------|
+    | %tR<br/>%tH:%tM     | 시분(24시간)  | 21:05<br/>21:05           |
+    | %tT<br/>%tH:%tM:%tS | 시분초(24시간) | 21:05:33<br/>21:05:33     |
+    | %tD<br/>%tm/%td/%ty | 월일년       | 11/16/15<br/>11/16/15     |
+    | %tF<br/>%tY-%tm-%td | 년월일       | 2015-11-16<br/>2015-11-16 |
+
+> PrintStream을 이용한 간단한 예제 : [InputOutput04_Ex09.java](./InputOutput04_Ex09.java)
