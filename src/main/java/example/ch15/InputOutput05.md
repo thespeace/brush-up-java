@@ -1,6 +1,7 @@
 # 문자기반 스트림
 * 문자데이터를 다루는데 사용된 다는 것을 제외하고는 바이트기반 스트림과 문자기반 스트림의 사용방법은 거의 같기 때문에 앞서 설명한 바이트기반 스트림에 대한 내용만으로도 별도의 설명은 필요없을 것이다. 따라서 예제 중심으로 기본적인 사용법과 추가적으로 설명이 필요한 부분만을 추가적으로 소개하고자 한다.
-<br><Br>
+<br><br>
+---
 ## 1. Reader와 Writer
 * 바이트기반 스트림의 조상이 InputStream/OutputStream인 것과 같이 문자기반의 스트림에서는 Reader/Writer가 그와 같은 역할을 한다.<br><br>
 * Reader의 메서드
@@ -39,3 +40,10 @@
 * 문자기반 스트림이라는 것이 단순히 2 byte로 스트림을 처리하는 것만을 의미하지는 않는다. 문자 데이터를 다루는데 필요한 또 하나의 정보는 인코딩(encoding)이다.
 * 문자기반 스트림, 즉 Reader/Writer 그리고 그 자손들은 여러 종류의 인코딩과 자바에서 사용하는 유니코드(UTF-16)간의 변환을 자동적으로 처리해준다.
 * Reader는 특정 인코딩을 읽어서 유니코드로 변환하고 Writer는 유니코드를 특정 인코딩으로 변환하여 저장한다.
+<br><br>
+---
+## 2. FileReader와 FileWriter
+* FileReader/FileWriter는 파일로부터 텍스트데이터를 읽고, 파일에 쓰는데 사용된다.
+* 사용방법은 FileInputStream/FileOutputStream과 다르지 않으므로 자세한 내용은 생략한다.
+
+> FileReader을 사용한 간단한 예제 : [InputOutput05_Ex01.java](./InputOutput05_Ex01.java)
