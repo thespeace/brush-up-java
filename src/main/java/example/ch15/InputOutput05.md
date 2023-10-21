@@ -46,4 +46,5 @@
 * FileReader/FileWriter는 파일로부터 텍스트데이터를 읽고, 파일에 쓰는데 사용된다.
 * 사용방법은 FileInputStream/FileOutputStream과 다르지 않으므로 자세한 내용은 생략한다.
 
-> FileReader을 사용한 간단한 예제 : [InputOutput05_Ex01.java](./InputOutput05_Ex01.java)
+> FileReader을 이용한 간단한 예제 : [InputOutput05_Ex01.java](./InputOutput05_Ex01.java)\
+> FileReader와 FileWriter을 이용한 간단한 예제 : [InputOutput05_Ex02.java](./InputOutput05_Ex02.java)
