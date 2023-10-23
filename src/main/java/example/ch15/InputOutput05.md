@@ -46,8 +46,8 @@
 * FileReader/FileWriter는 파일로부터 텍스트데이터를 읽고, 파일에 쓰는데 사용된다.
 * 사용방법은 FileInputStream/FileOutputStream과 다르지 않으므로 자세한 내용은 생략한다.
 
-> FileReader을 이용한 간단한 예제 : [InputOutput05_Ex01.java](./InputOutput05_Ex01.java)\
-> FileReader와 FileWriter을 이용한 간단한 예제 : [InputOutput05_Ex02.java](./InputOutput05_Ex02.java)
+    > FileReader을 이용한 간단한 예제 : [InputOutput05_Ex01.java](./InputOutput05_Ex01.java)\
+    > FileReader와 FileWriter을 이용한 간단한 예제 : [InputOutput05_Ex02.java](./InputOutput05_Ex02.java)
 
 <br>
 
@@ -57,7 +57,7 @@
 * PipedReader/PipedWriter는 쓰레드 간에 데이털르 주고받을 때 사용된다. 다른 스트림과는 달리 입력과 출력스트림을 하나의 스트림으로 연결(connect)해서 데이터를 주고받는다는 특징이 있다.
 * 스트림을 생성한 다음에 어느 한쪽 쓰레드에서 connect()를 호출해서 입력스트림과 출력스트림을 연결한다. 입출력을 마친 후에는 어느 한쪽 스트림만 닫아도 나머지 스트림은 자동으로 닫힌다. 이 점을 제외하고는 일반 입출력방법과 다르지 않다.
 
-> PipedReader/PipedWriter를 이용한 간단한 예제 : [InputOutput05_Ex03.java](./InputOutput05_Ex03.java)
+    > PipedReader/PipedWriter를 이용한 간단한 예제 : [InputOutput05_Ex03.java](./InputOutput05_Ex03.java)
 
 <br>
 
@@ -71,3 +71,4 @@
     String toString()        // StringWriter에 출력된 (StringBuffer에 저장된) 문자열을 반환한다.
     ```
 * 근본적으로는 String도 char배열이지만, 아무래도 char배열보다는 String으로 처리하는 것이 여러모로 편리한 경우가 더 많을 것이다.
+    > StringReader/StringWriter를 이용한 간단한 예제 : [InputOutput05_Ex04.java](./InputOutput05_Ex04.java)
