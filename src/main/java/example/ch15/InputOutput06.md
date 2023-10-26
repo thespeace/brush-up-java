@@ -37,3 +37,4 @@
   System.out.println(prop.get("sun.jnu.encoding"));
   ```
 
+  > InputStreamReader를 이용한 간단한 예제 : [InputOutput06_Ex02.java](./InputOutput06_Ex02.java)
