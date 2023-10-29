@@ -33,4 +33,5 @@
 | static void setIn(InputStream in)   | System.in의 입력을 지정한 InputStream으로 변경  |
 
 * 그러나 JDK1.5부터는 Scanner클래스가 제공되면서 System.in으로부터 데이터를 입력받아 작업한느 것이 편리해졌다.
-> 위 표준입출력을 이용한 예제 1 : [InputOutput07_Ex2.java](./InputOutput07_Ex02.java) 
+> 위 표준입출력을 이용한 예제 1 : [InputOutput07_Ex2.java](./InputOutput07_Ex02.java)\
+> 위 표준입출력을 이용한 예제 2 : [InputOutput07_Ex3.java](./InputOutput07_Ex03.java)
