@@ -33,8 +33,8 @@
 | static void setIn(InputStream in)   | System.in의 입력을 지정한 InputStream으로 변경  |
 
 * 그러나 JDK1.5부터는 Scanner클래스가 제공되면서 System.in으로부터 데이터를 입력받아 작업한느 것이 편리해졌다.
-> 위 표준입출력을 이용한 예제 1 : [InputOutput07_Ex2.java](./InputOutput07_Ex02.java)\
-> 위 표준입출력을 이용한 예제 2 : [InputOutput07_Ex3.java](./InputOutput07_Ex03.java)
+> 위 표준입출력을 이용한 예제 1 : [InputOutput07_Ex02.java](./InputOutput07_Ex02.java)\
+> 위 표준입출력을 이용한 예제 2 : [InputOutput07_Ex03.java](./InputOutput07_Ex03.java)
 
 <br>
 
@@ -59,5 +59,7 @@
   | void seek(long pos)                                                                             | 파일 포인터의 위치를 변경한다. 위치는 파일의 첫 부<br/>분부터 pos크기만큼 떨어진 곳이다.(단위 byte)                                                                                                                                                                                                                |
   | void setLength(long newLength)                                                                  | 파일의 크기를 지정된 길이로 변경한다.(byte단위)                                                                                                                                                                                                                                                  |
   | int skipBytes(int n)                                                                            | 지정된 수만큼의 byte를 건너뛴다.                                                                                                                                                                                                                                                           |
-  * 사실 모든 입출력에 사용되는 클래스들은 입출력 시 다음 작업이 이루어질 위치를 저장학 ㅗ있는 포인터를 내부적으로 갖고 있다. 다만 내부적으로만 사용될 수 있기 때문에 작업자가 포인터의 위치를 마음대로 변경할 수 없다는 것이 RandomAccessFile과 다른점이다.
+  * 사실 모든 입출력에 사용되는 클래스들은 입출력 시 다음 작업이 이루어질 위치를 저장하고 있는 포인터를 내부적으로 갖고 있다. 다만 내부적으로만 사용될 수 있기 때문에 작업자가 포인터의 위치를 마음대로 변경할 수 없다는 것이 RandomAccessFile과 다른점이다.
   * RandomAccessFile의 인스턴스를 "rw" mode로 생성할 때, 지정된 파일이 없으면 새로운 파일을 생성한다.
+
+> RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex04.java](./InputOutput07_Ex04.java)
