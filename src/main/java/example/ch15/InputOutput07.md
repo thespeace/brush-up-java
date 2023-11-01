@@ -62,4 +62,5 @@
   * 사실 모든 입출력에 사용되는 클래스들은 입출력 시 다음 작업이 이루어질 위치를 저장하고 있는 포인터를 내부적으로 갖고 있다. 다만 내부적으로만 사용될 수 있기 때문에 작업자가 포인터의 위치를 마음대로 변경할 수 없다는 것이 RandomAccessFile과 다른점이다.
   * RandomAccessFile의 인스턴스를 "rw" mode로 생성할 때, 지정된 파일이 없으면 새로운 파일을 생성한다.
 
-> RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex04.java](./InputOutput07_Ex04.java)
+> RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex04.java](./InputOutput07_Ex04.java)\
+> RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex05.java](./InputOutput07_Ex05.java)
