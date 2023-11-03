@@ -65,3 +65,21 @@
 > RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex04.java](./InputOutput07_Ex04.java)\
 > RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex05.java](./InputOutput07_Ex05.java)\
 > RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex06.java](./InputOutput07_Ex06.java)
+
+<br>
+
+---
+## 4. File
+* 파일은 기본적이면서도 가장 많이 사용되는 입출력 대상이기 때문에 중요하다. 자바에서는 File클래스를 통해서 파일과 디렉토리를 다룰 수 있도록 하고 있다. 그래서 File인스턴스는 파일 일 수도 있고 디렉토리일 수도 있다.
+* File의 생성자와 경로와 관련된 메서드
+
+  | 생성자 / 메서드                                                                       | 설 명                                                                                                                                                                                               |
+  |---------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | File(String fileName)                                                           | 주어진 문자열(fileName)을 이름으로 갖는 파일을 위한<br/>File인스턴스를 생성한다. 파일 뿐만 아니라 디렉토리도 같<br/>은 방법으로 다룬다.<br/>여기서 fileName은 주로 경로(path)를 포함해서 지정해주<br/>지만, 파일 이름만 사용해도 되는 데 이 경우 프로그램이<br/>실행되는 위치가 경로(path)로 간주된다. |
+  | File(String pathName, String fileName)<br/>File(File pathName, String fileName) | 파일의 경로와 이름을 따로 분리해서 지정할 수 있도록 한<br/>생성자. 이 중 두 번째 것은 경로를 문자열이 아닌 File인스<br/>턴스인 경우를 위해서 제공된 것이다.                                                                                                  |
+  | File(URI uri)                                                                   | 지정된 url로 파일을 생성                                                                                                                                                                                   |
+  | String getName()                                                                | 파일이름을 String으로 반환                                                                                                                                                                                 |
+  | String getPath()                                                                | 파일의 경로(path)를 String으로 반환                                                                                                                                                                         |
+  | String getAbsolutePath()<br/>File getAbsoluteFile()                             | 파일의 절대경로를 String으로 반환<br/>파일의 절대경로를 File로 반환                                                                                                                                                      |
+  | String getParent()<br/>File getParentFile()                                     | 파일의 조상 디렉토리를 String으로 반환<br/>파일의 조상 디렉토리를 File로 반환                                                                                                                                                |
+  | String getCanonicalPath()<br/>File getCanonicalFile()                           | 파일의 정규경로를 String으로 반환<br/>파일의 정규경로를 File로 반환                                                                                                                                                      |
