@@ -96,4 +96,4 @@
   | static char separatorChar     | OS에서 사용하는 이름 구분자. 윈도우 "￦", 유닉스 "/"            |
 
   * 파일의 경로(path)와 디렉토리나 파일의 이름을 구분하는 데 사용되는 구분자가 OS마다 다를 수 있기 때문에, OS 독립적으로 프로그램을 작성하기 위해서는 반드시 위의 멤버변수들을 이용해야 한다. 만일 윈도우에서 사용하는 구분자를 코드에 직접 적어 놓았다면, 이 코드는 다른 OS에서는 오류를 일으킬 수 있다.
->  RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex07.java](./InputOutput07_Ex07.java)
+>  File인스턴스 생성과 메서드를 이용한 간단한 예제 : [InputOutput07_Ex07.java](./InputOutput07_Ex07.java)
