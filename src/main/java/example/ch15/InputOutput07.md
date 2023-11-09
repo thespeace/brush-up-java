@@ -133,4 +133,5 @@
   | URI toURI()                                                                                                                                                                                                                                                                                                                                        | 파일을 URI로 변환해서 반환                                                                                                                                   |
 
 > File 클래스를 이용한 간단한 예제 1 : [InputOutput07_Ex08.java](./InputOutput07_Ex08.java)\
-> File 클래스를 이용한 간단한 예제 2 : [InputOutput07_Ex09.java](./InputOutput07_Ex09.java)
+> File 클래스를 이용한 간단한 예제 2 : [InputOutput07_Ex09.java](./InputOutput07_Ex09.java)\
+> File 클래스를 이용한 간단한 예제 3 : [InputOutput07_Ex10.java](./InputOutput07_Ex10.java)
