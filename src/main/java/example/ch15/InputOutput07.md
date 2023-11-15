@@ -139,4 +139,5 @@
 > File 클래스를 이용한 간단한 예제 5 : [InputOutput07_Ex12.java](./InputOutput07_Ex12.java)\
 > File 클래스를 이용한 간단한 예제 6 : [InputOutput07_Ex13.java](./InputOutput07_Ex13.java)\
 > File 클래스를 이용한 간단한 예제 7 : [InputOutput07_Ex14.java](./InputOutput07_Ex14.java)\
-> File 클래스를 이용한 간단한 예제 8 : [InputOutput07_Ex15.java](./InputOutput07_Ex15.java)
+> File 클래스를 이용한 간단한 예제 8 : [InputOutput07_Ex15.java](./InputOutput07_Ex15.java)\
+> File 클래스를 이용한 간단한 예제 9 : [InputOutput07_Ex16.java](./InputOutput07_Ex16.java)
