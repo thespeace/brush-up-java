@@ -11,6 +11,9 @@ import java.io.*;
  *              ...example>ch15> dir temp.dat*
  *              ...결과 출력...
  *          }
+ *
+ *      - 아래의 예제로 잘라진 파일들을 붙여서 다시 원래의 파일로 만들어보자.
+ *        @see InputOutput07_Ex17
  */
 public class InputOutput07_Ex16 {
     public static void main(String[] args) throws IOException {
