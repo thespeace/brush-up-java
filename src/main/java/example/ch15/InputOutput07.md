@@ -17,6 +17,7 @@
     ...
   }
   ```
+<br>
 
 > 위 표준입출력을 이용한 간단한 예제 : [InputOutput07_Ex01.java](./InputOutput07_Ex01.java)
 
@@ -32,7 +33,10 @@
 | static void setErr(PrintStream err) | System.err의 출력을 지정한 PrintStream으로 변경 |
 | static void setIn(InputStream in)   | System.in의 입력을 지정한 InputStream으로 변경  |
 
-* 그러나 JDK1.5부터는 Scanner클래스가 제공되면서 System.in으로부터 데이터를 입력받아 작업한느 것이 편리해졌다.
+* 그러나 JDK1.5부터는 Scanner클래스가 제공되면서 System.in으로부터 데이터를 입력받아 작업하는 것이 편리해졌다.
+
+<br>
+
 > 위 표준입출력을 이용한 예제 1 : [InputOutput07_Ex02.java](./InputOutput07_Ex02.java)\
 > 위 표준입출력을 이용한 예제 2 : [InputOutput07_Ex03.java](./InputOutput07_Ex03.java)
 
@@ -61,6 +65,8 @@
   | int skipBytes(int n)                                                                            | 지정된 수만큼의 byte를 건너뛴다.                                                                                                                                                                                                                                                           |
   * 사실 모든 입출력에 사용되는 클래스들은 입출력 시 다음 작업이 이루어질 위치를 저장하고 있는 포인터를 내부적으로 갖고 있다. 다만 내부적으로만 사용될 수 있기 때문에 작업자가 포인터의 위치를 마음대로 변경할 수 없다는 것이 RandomAccessFile과 다른점이다.
   * RandomAccessFile의 인스턴스를 "rw" mode로 생성할 때, 지정된 파일이 없으면 새로운 파일을 생성한다.
+
+<br>
 
 > RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex04.java](./InputOutput07_Ex04.java)\
 > RandomAccessFile을 이용한 간단한 예제 : [InputOutput07_Ex05.java](./InputOutput07_Ex05.java)\
@@ -96,7 +102,7 @@
   | static char separatorChar     | OS에서 사용하는 이름 구분자. 윈도우 "￦", 유닉스 "/"            |
 
   * 파일의 경로(path)와 디렉토리나 파일의 이름을 구분하는 데 사용되는 구분자가 OS마다 다를 수 있기 때문에, OS 독립적으로 프로그램을 작성하기 위해서는 반드시 위의 멤버변수들을 이용해야 한다. 만일 윈도우에서 사용하는 구분자를 코드에 직접 적어 놓았다면, 이 코드는 다른 OS에서는 오류를 일으킬 수 있다.
->  File인스턴스 생성과 메서드를 이용한 간단한 예제 : [InputOutput07_Ex07.java](./InputOutput07_Ex07.java)
+  >  File인스턴스 생성과 메서드를 이용한 간단한 예제 : [InputOutput07_Ex07.java](./InputOutput07_Ex07.java)
 
 <br>
 
@@ -131,6 +137,8 @@
   | boolean setLastModified(long t)                                                                                                                                                                                                                                                                                                                    | 파일의 마지막으로 수정된 시간을 지정된 시간(t)으로 변경                                                                                                                   |
   | Path toPath()                                                                                                                                                                                                                                                                                                                                      | 파일을 Path로 변환해서 반환                                                                                                                                  |
   | URI toURI()                                                                                                                                                                                                                                                                                                                                        | 파일을 URI로 변환해서 반환                                                                                                                                   |
+
+<br>
 
 > File 클래스를 이용한 간단한 예제 1 : [InputOutput07_Ex08.java](./InputOutput07_Ex08.java)\
 > File 클래스를 이용한 간단한 예제 2 : [InputOutput07_Ex09.java](./InputOutput07_Ex09.java)\
