@@ -12,3 +12,71 @@
 * 그러나 우리는 객체를 어떻게 직렬화해야 하는지 전혀 고민하What is serialization?지 않아도 된다. 다만 객체를 직렬화/역직렬화할 수 있는 ObjectInputStream과 ObjectOutputStream을 사용하는 방법만 알면 된다.
 <br>
 +두 객체가 동일한지 판단하는 기준이 두 객체의 인스턴스변수의 값들이 같고 다름이라는 것을 상기하자.
+
+## 2. ObjectInputStream, ObjectOutputStream.
+* 직렬화(스트림에 객체를 출력)에는 ObjectOutputStream을 사용하고 역직렬화(스트림으로부터 객체를 입력)에는 ObjectInputStream을 사용한다.
+* 각각 InputStream과 OutputStream을 직접 상속받지만 기반스트림을 필요로 하는 보조스트림이다. 그래서 객체를 생성할 때 입출력(직렬화/역직렬화)할 스트림을 지정해주어야 한다.
+  ```java
+  ObjectInputStream(InputStream in)
+  ObjectOutputStream(OutputStream out)
+  ``` 
+<br>
+
+* 만일 파일에 객체를 저장(직렬화)하고 싶다면 다음과 같이 하면 된다.
+  ```java
+  FileOutputStream fos = new FileOutputStream("objectfile.ser");
+  ObjectOutputStream = new ObjectOutputStream(fos);
+  
+  out.writeObject(new UserInfo());
+  // 위 코드는 objectFile.ser이라는 파일에 UserInfo객체를 직렬화하여 저장한다. 
+  // 출력할 스트림(FileOutputStream)을 생성해서 이를 기반스트림으로 하는 ObjectOutputStream을 생성한다.
+  // ObjectOutputStream의 writeObject(Object obj)를 사용해서 객체를 출력하면, 객체가 파일에 직렬화되어 저장된다.
+  ```
+<br>
+
+* 역직렬화 방법 역시 간단하다. 직렬화할 때와는 달리 입력스트림을 사용하고 writeObject(Object obj)대신 readObject()를 사용하여 저장된 데이터를 읽기만 하면 객체로 역직렬화된다.
+* 다만 readObject()의 반환타입이 Object이기 때문에 객체 원래의 타입으로 형변환 해주어야 한다.
+  ```java
+  FileInputStream fis = new FileInputStream("objectfile.ser");
+  ObjectInputStream in = new ObjectInputStream(fis);
+  
+  UserInfo info = (UserInfo)in.readObject();
+  ```
+
+<br>
+
+* ObjectInputStream과 ObjectOutputStream의 메서드
+
+  | ObjectInputStream                      | ObjectOutputStream                       |
+  |----------------------------------------|------------------------------------------|
+  | void defaultReadObject()               | void defaultWriteObject()                |
+  | int read()                             | void write(byte[] buf)                   |
+  | int read(byte[] buf, int off, int len) | void write(byte[] buf, int off, int len) |
+  | boolean readBoolean()                  | void write(int val)                      |
+  | byte readByte()                        | void writeBoolean(boolean val)           |
+  | char readChar()                        | void writeByte(int val)                  |
+  | double readDouble()                    | void writeBytes(String str)              |
+  | float readFloat()                      | void writeChar(int val)                  |
+  | int readInt()                          | void writeChars(String str)              |
+  | long readLong()                        | void writeDouble(double val)             |
+  | short readShort()                      | void writeFloat(float val)               |
+  | Object readObject()                    | void writeInt(int val)                   |
+  | int readUnsignedByte()                 | void writeLong(long val)                 |
+  | int readUnsignedShort()                | void writeObject(Object obj)             |
+  | Object readUnshared()                  | void writeShort(int val)                 |
+  | String readUTF()                       | void writeUnshared(Object obj)           |
+  |                                        | void writeUTF(String str)                |
+
+* 이 메서드들은 직렬화와 역직렬화를 직접 구현할 때 주로 사용되며, defaultReadObject()와 defaultWriteObject()는 자동 직렬화를 수행한다.
+* 객체를 직렬화/역직렬화하는 작업은 객체의 모든 인스턴스변수가 참조하고 있는 모든 객체에 대한 것이기 때문에 상당히 복잡하며 시간도 오래 걸린다. readObject()와 writeObject()를 사용한 자동 직렬화가 편리하기는 하지만 직렬화 작업시간을 단축시키려면 직렬화하고자 하는 개체의 클래스에 추가적으로 다음과 같은 2개의 메서드를 직접 구현해주어야 한다.
+  ```java
+  private void writeObject(ObjectOutputStream out) throws IOException {
+    // write메서드를 사용해서 직렬화를 수행한다.
+  }
+  
+  private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+    // read메서드를 사용해서 역직렬화를 수행한다.
+  }
+  
+  // 위 메서드에 대한 구현은 나중에 예제를 통해 자세히 알아보자
+  ```
