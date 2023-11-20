@@ -13,6 +13,8 @@
 <br>
 +두 객체가 동일한지 판단하는 기준이 두 객체의 인스턴스변수의 값들이 같고 다름이라는 것을 상기하자.
 
+***
+
 ## 2. ObjectInputStream, ObjectOutputStream.
 * 직렬화(스트림에 객체를 출력)에는 ObjectOutputStream을 사용하고 역직렬화(스트림으로부터 객체를 입력)에는 ObjectInputStream을 사용한다.
 * 각각 InputStream과 OutputStream을 직접 상속받지만 기반스트림을 필요로 하는 보조스트림이다. 그래서 객체를 생성할 때 입출력(직렬화/역직렬화)할 스트림을 지정해주어야 한다.
@@ -80,3 +82,96 @@
   
   // 위 메서드에 대한 구현은 나중에 예제를 통해 자세히 알아보자
   ```
+
+<br>
+
+***
+
+## 3. 직렬화가 가능한 클래스 만들기 : Serializable, transient
+<br>
+
+* 직렬화가 가능한 클래스를 만드는 방법은 간단하다. 직렬화하고자 하는 클래스가 java.io.Serializable인터페이스를 구현하도록 하면 된다.
+  ```java
+    public class UserInfo {
+        String name;
+        String password;
+        int age;
+    }
+  
+    //위의 UserInfo라는 클래스가 있을 때, 이 클래스를 직렬화 가능하도록 변경-
+    public class UserInfo implements java.io.Serializable {
+        String name;
+        String password;
+        int age;
+    }
+  ```
+  <br>
+* Serializable 인터페이스는 아무런 내용도 없는 빈 인터페이스지만, 직렬화를 고려하여 작성한 클래스인지를 판단하는 기준이 된다.
+  ```java public interface Serialzable { }``` 
+* Serializable을 구현한 클래스를 상속받는다면, Serializable을 구현하지 않아도 된다.
+  ```java
+  // UserInfo는 Serializable을 구현하지 않았지만 조상인 SuperUserInfo가 Serializable을 구현하였으므로 UserInfo역시 직렬화가 가능하다.
+  public class SuperUserInfo implements Serializable {
+    String name;
+    String password;
+  }
+  public class UserInfo extends SuperUserInfo {
+    int age;
+  }
+  // UserInfo객체를 직렬화하면 조상인 SuperUserInfo에 정의된 인스턴스변수 name, password도 함께 직렬화된다.
+  ```
+  <br>
+* 다음과 같이 조상클래스가 Serializable을 구현하지 않았다면 자손클래스를 직렬화할 때, 조상클래스에 정의된 인스턴스변수 name과 password는 직렬화 대상에서 제외된다.
+  ```java
+  public class SuperUserInfo {
+    String name;
+    String password;
+  }
+  public class UserInfo extends SuperUserInfo implements Serializable {
+    int age;
+  }
+  // 조상클래스에 정의된 인스턴스변수 name과 password를 직렬화 대상에 포함시키기 위해서는 조상클래스가 Serializable을 구현하도록 하던가, 
+  // UserInfo에서 조상의 인스턴스변수들이 직렬화되도록 처리하는 코드를 직접 추가해 주어야한다. 직접 추가하는 방법은 추후에 살펴보자.
+  ```
+  <br>
+* java.io.NotSerializableException이 발생하면서 직렬화에 실패하는 코드.
+  ```java
+  public class UserInfo implements Serializable {
+    String name;
+    String password;
+    int age;
+  
+    Object obj = new Object(); // Object객체는 직렬화할 수 없다.
+  }
+  // 직렬화할 수 없는 클래스의 객체를 인스턴스변수가 참조하고 있기 때문에 직렬화에 실패했다.
+  // 모든 클래스의 최고조상인 Object는 Serializable을 구현하지 않았기 때문에 직렬화할 수 없다.
+  // 만일 Object가 Serializable을 구현했다면 모든 클래스가 직렬화 될 수 있을 것이다.
+  ```
+  <br>
+* 위의 경우와 비교해서 다음과 같은 경우에는 직렬화가 가능하다.
+  ```java
+  public class UserInfo implements Serializable {
+    String name;
+    String password;
+    int age;
+  
+    Object obj = new String("abc"); // String은 직렬화될 수 있다.
+  } 
+  // 인스턴스변수 obj의 타입이 직렬화가 안 되는 Object이긴 하지만 실제로 저장된 객체는
+  // 직렬화가 가능한 String인스턴스이기 때문에 직렬화가 가능하다.
+  // 인스턴스변수의 타입이 아닌 실제로 연결된 객체의 종류에 의해서 결정된다는 것을 기억하자.
+  ```
+  <br>
+* 직렬화하고자 하는 객체의 클래스에 직렬화가 안 되는 객체에 대한 참조를 포함하고 있다면, 제어자 transient를 붙여서 직렬화 대상에서 제외되도록 할 수 있다. 또는 password와 같이 보안상 직렬화되면 안 되는 값에 대해서 transient를 사용할 수 있다. 다르게 표현하면 transient가 붙은 인스턴스변수의 값은 그 타입의 기본값으로 직렬화된다고 볼 수 있다.
+  ```java
+  public class UserInfo implements Serializable {
+    String name;
+    transient String password; // 직렬화 대상에서 제외된다.
+    int age;
+  
+    transient Object obj = new Object(); // 직렬화 대상에서 제외된다.
+  }  
+  // UserInfo객체를 역직렬화하면 참조변수인 obj와 password의 값은 null이 된다.
+  ```
+
+> UserInfo 예제를 위한 클래스 소스 : [InputOutput08_Ex01.java](./InputOutput08_Ex01.java)
