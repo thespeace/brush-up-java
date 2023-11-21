@@ -174,4 +174,5 @@
   // UserInfo객체를 역직렬화하면 참조변수인 obj와 password의 값은 null이 된다.
   ```
 
-> UserInfo 예제를 위한 클래스 소스 : [InputOutput08_Ex01.java](./InputOutput08_Ex01.java)
+> UserInfo 예제를 위한 클래스 소스 : [InputOutput08_Ex01.java](./InputOutput08_Ex01.java)\
+> 객체를 직렬화하여 파일에 저장하는 예제 : [InputOutput08_Ex02.java](./InputOutput08_Ex02.java)
