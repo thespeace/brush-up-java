@@ -176,4 +176,5 @@
 
 > UserInfo 예제를 위한 클래스 소스 : [InputOutput08_Ex01.java](./InputOutput08_Ex01.java)\
 > 객체를 직렬화하여 파일에 저장하는 예제 : [InputOutput08_Ex02.java](./InputOutput08_Ex02.java)\
-> 직렬화된 객체 파일을 역직렬화하는 예제 : [InputOutput08_Ex03.java](./InputOutput08_Ex03.java)
+> 직렬화된 객체 파일을 역직렬화하는 예제 : [InputOutput08_Ex03.java](./InputOutput08_Ex03.java)\
+> 직렬화되지 않는 조상으로부터 상속받은 인스턴스변수에 대한 직렬화를 구현한 예제 : [InputOutput08_Ex04.java](./InputOutput08_Ex04.java)
