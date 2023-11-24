@@ -178,3 +178,44 @@
 > 객체를 직렬화하여 파일에 저장하는 예제 : [InputOutput08_Ex02.java](./InputOutput08_Ex02.java)\
 > 직렬화된 객체 파일을 역직렬화하는 예제 : [InputOutput08_Ex03.java](./InputOutput08_Ex03.java)\
 > 직렬화되지 않는 조상으로부터 상속받은 인스턴스변수에 대한 직렬화를 구현한 예제 : [InputOutput08_Ex04.java](./InputOutput08_Ex04.java)
+
+<br>
+
+***
+
+## 4. 직렬화가능한 클래스의 버전관리
+* 직렬화된 객체를 역직렬화할 때는 직렬화 했을 때와 같은 클래스를 사용해야한다. 그러나 클래스의 이름이 같더라도 클래스의 내용이 변경된 경우 역직렬화는 실패하며 다음과 같은 예외가 발생한다.
+  ```
+  java.io.InvalidClassException : UserInfo; local class incompatible:
+  stream classdesc serialVersionUID = 6953673583338942489, local
+  class serialVersionUID = -6256164443556992367 
+  ```
+  
+* 위 예외의 내용은 직렬화 할 때와 역직렬화 할 때의 클래스의 버전이 같아야 하는데 다르다는 것이다. 객체가 직렬화될 때 클래스에 정의된 멤버들의 정보를 이용해서 serialVersionUID라는 클래스의 버전을 자동생성해서 직렬화 내용에 포함된다. 그래서 역직렬화 할 때 클래스의 버전을 비교함으로써 직렬화할 때의 클래스의 버전과 일치하는지 확인할 수 있는 것이다.
+* 그러나 static변수나 상수 또는 trasient가 붙은 인스턴스변수가 추가되는 경우에는 직렬화에 영향을 미치지 않기 때문에 클래스의 버전을 다르게 인식하도록 할 필요는 없다.
+* 네트워크로 객체를 직렬화하여 전송하는 경우, 보내는 쪽과 받는 쪽이 모두 같은 버전의 클래스를 가지고 있어야하는데 클래스가 조금만 변경되어도 해당 클래스를 재배포하는 것은 프로그램을 관리하기 어렵게 만든다.
+* 이럴 때는 클래스의 버전을 수동으로 관리해줄 필요가 있다.
+  ```java
+  class Mydata implements java.io.Serializable {
+    int value1;
+  }
+  ```
+  
+* 위와 같이 Mydata라는 직렬화가 가능한 클래스가 있을 때, 클래스의 버전을 수동으로 관리하려면 다음과 같이 serialVersionUID를 추가로 정의해야 한다.
+  ```java
+  class MyData implements java.io.Serializable {
+    static final long serialVersionUID = 3518731767529258119L;
+    int value1;
+  }
+  ```
+  
+* 이렇게 클래스 내에 serialVersionUID를 정의해주면, 클래스의 내용이 바뀌어도 클래스의 버전이 자동생성된 값으로 변경되지 않는다.
+* serialVersionUID의 값은 정수값이면 어떠한 값으로도 지정할 수 있지만 서로 다른 클래스간에 같은 값을 갖지 않도록 serialver.exe를 사용해서 생성된 값을 사용하는 것이 보통이다.
+
+  ```shell
+  C:\jdk1.8\work\ch15> serialver MyData
+  MyData:    static final long serialVersionUID = 3518731767529258119L;
+  ```
+  
+* serialver.exe 뒤에 serialVersionUID를 얻고자 하는 클래스의 이름만 적어주면 클래스의 serialVersionUID를 알아낼 수 있다. serialver.exe 는 클래스에 serialVersionUID가 정의되어 있으면 그 값을 출력하고 정의되어 있지 않으면 자동 생성한 값을 출력한다.
+* serialver.exe에 의해서 생성되는 serialVersionUID값은 클래스의 멤버들에 대한 정보를 바탕으로 하기 때문에 이 정보가 변경되지 않는 한 항상 같은 값을 생성한다.
