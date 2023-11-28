@@ -66,3 +66,24 @@
 
 * 이처럼 IP주소와 서브넷 마스크를 '&'연산하면 네트워크 주소를 얻어낼 수 있어서 서로 다른 두 호스트의 IP주소를 서브넷 마스크로 '&'연산을 수행해서 비교하면 이 두 호스트가 같은 네트워크 상에 존재하는지를 쉽게 확인할 수 있다.
 
+***
+<br>
+
+### 1.3 InetAddress
+* 자바에서는 IP주소를 다루기 위한 클래스로 InetAddress를 제공하며 다음과 같은 메서드가 정의되어 있다.
+* InetAddress의 메서드
+
+  | 메서드                                                | 설명                                             |
+  |----------------------------------------------------|------------------------------------------------|
+  | byte[] getAddress()                                | IP주소를 byte배열로 반환한다.                            |
+  | static InetAddress[]<br/>getAllByName(String host) | 도메인명(host)에 지정된 모든 호스트의 IP주소를 배열에<br/>담아 반환한다. |
+  | static InetAddress getByAddress(byte[]<br/>addr)   | byte배열을 통해 IP주소를 얻는다.                          |
+  | static InetAddress<br/>getByName(String host)      | 도메인명(host)을 통해 IP주소를 얻는다.                      |
+  | String getCanonicalHostName()                      | FQDN(fully qualified domain name)을 반환한다.       |
+  | String getHostAddress()                            | 호스트의 IP주소를 반환한다.                               |
+  | String getHostName()                               | 호스트의 이름을 반환한다.                                 |
+  | static InetAddress getLocalHost()                  | 지역호스트의 IP주소를 반환한다.                             |
+  | boolean isMulticastAddress()                       | IP주소가 멀티캐스트 주소인지 알려준다.                         |
+  | boolean isLoopbackAddress()                        | IP주소가 loopback 주소(127.0.0.1)인지 알려준다.           |
+
+> InetAddress의 주요 메서드들을 활용하는 예제 : [Network01_Ex01](./Network01_Ex01.java)
