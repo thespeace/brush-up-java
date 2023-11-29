@@ -87,3 +87,60 @@
   | boolean isLoopbackAddress()                        | IP주소가 loopback 주소(127.0.0.1)인지 알려준다.           |
 
 > InetAddress의 주요 메서드들을 활용하는 예제 : [Network01_Ex01](./Network01_Ex01.java)
+***
+<br>
+
+### 1.4 URL(Uniform Resource Locator)
+* URL은 인터넷에 존재하는 여러 서버들이 제공하는 자원에 접근할 수 있는 주소를 표현하기 위한 것으로 ```'프로토콜://호스트명:포트번호/경로명/파일명?쿼리스트링#참조'```의 형태로 이루어져 있다. 여기서 포트번호, 쿼리, 참조는 생략할 수 있다.
+> http://www.naver.com:80/sample/hello.html?referer=naver#index1 <br><br>
+> 프로토콜 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 자원에 접근하기 위해 서버와 통신하는데 사용되는 통신규약(http)<br>
+> 호스트명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 자원을 제공하는 서버의 이름(www.naver.com)<br>
+> 포트번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 통신에 사용되는 서버의 포트번호(80)<br>
+> 경로명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 접근하려는 자원이 저장된 서버상의 위치(/sample/)<br>
+> 파일명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 접근하려는 자원의 이름(hello.html)<br>
+> 쿼리(query)&nbsp;&nbsp; : URL에서 '?'이후의 부문(referer=naver)<br>
+> 참조(anchor) : URL에서 '#'이후의 부분(index1)<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ HTTP프로토콜에서는 80번 포트를 사용하기 때문에 URL에서 포트번호를 생략하는 경우 80으로 간주한다.<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;각 프로토콜에 따라 통신에 사용하는 포트번호가 다르며 생략되면 각 프로토콜의 기본 포트가 사용된다.
+
+* 자바에서는 URL을 다루기 위한 클래스로 URL클래스를 제공하며 당므과 같은 메서드가 정의되어 있다.
+* URL의 메서드
+
+  | 메서드                                                                                                                                | 설명                                             |
+  |------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+  | URL(String spec)                                                                                                                   | 지정된 문자열 정보의 URL 객체를 생성한다.                      |
+  | URL(String protocol, String host, String file)                                                                                     | 지정된 값으로 구성된 URL 객체를 생성한다.                      |
+  | URL(String protocol, String host, int port, String file)                                                                           | 지정된 값으로 구성된 URL 객체를 생성한다.                      |
+  | String getAuthority()                                                                                                              | 호스트명과 포트를 문자열로 반환한다.                           |
+  | Object getContent()                                                                                                                | URL 의 Content객체를 반환한다.                         |
+  | Object getContent(Class[] classes)                                                                                                 | URL 의 Content객체를 반환한다.                         |
+  | int getDefaultPort()                                                                                                               | URL의 기본 포트를 반환한다.(http는 80)                    |
+  | String getFile()                                                                                                                   | 파일명을 반환한다.                                     |
+  | String getHost()                                                                                                                   | 호스트명을 반환한다.                                    |
+  | String getPath()                                                                                                                   | 경로명을 반환한다.                                     |
+  | int getPort()                                                                                                                      | 포트를 반환한다.                                      |
+  | String getProtocol()                                                                                                               | 프로토콜을 반환한다.                                    |
+  | String getQuery()                                                                                                                  | 쿼리를 반환한다.                                      |
+  | String getRef()                                                                                                                    | 참조(anchor)를 반환한다.                              |
+  | String getUserInfo()                                                                                                               | 사용자정보를 반환한다.                                   |
+  | URLConnection openConnection()                                                                                                     | URL과 연결된 URLConnection을 얻는다.                   |
+  | URLConnection openConnection(Proxy proxy)                                                                                          | URL과 연결된 URLConnection을 얻는다.                   |
+  | InputStream openStream()                                                                                                           | URL과 연결된 URLConnection의 InputStream<br/>을 얻는다. |
+  | boolean sameFile(URL other)                                                                                                        | 두 URL이 서로 같은 것인지 알려준다.                         |
+  | void set(String protocol, String host,<br/>int port, String file, String ref)                                                      | URL 객체의 속성을 지정된 값으로 설정한다.                      |
+  | void set(String protocol, String host,<br/>int port, String authority, String userInfo,<br/>String path, String query, String ref) | URL 객체의 속성을 지정된 값으로 설정한다.                      |
+  | String toExternalForm()                                                                                                            | URL을 문자열로 변환하여 반환한다.                           |
+  | URL toURL()                                                                                                                        | URL을 URL로 변환하여 반환한다.                           |
+
+<br>
+
+* URL객체를 생성하는 방법은 다음과 같다.
+  ```java
+  URL url = new URL("http://www.naver.com/sample/hello.html");
+  URL url = new URL("www.naver.com", "/sample/hello.html");
+  URL url = new URL("http","www.naver.com",80,"/sample/hello.html");
+  ```
+
+<br>
+
+> URL 메서드를 사용한 예제 : [Network01_Ex02](./Network01_Ex02.java)
