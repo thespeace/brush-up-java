@@ -212,4 +212,5 @@
 
 <br>
 
-> URLConnection을 생성, get메서드들을 통해서 관련정보를 얻어서 출력하는 예제 : [Network01_Ex03](./Network01_Ex03.java)
+> URLConnection을 생성, get메서드들을 통해서 관련정보를 얻어서 출력하는 예제 : [Network01_Ex03](./Network01_Ex03.java)\
+> URL에 연결하여 그 내용을 읽어오는 예제 : [Network01_Ex04](./Network01_Ex04.java)
