@@ -71,6 +71,8 @@
 
 ### 1.3 InetAddress
 * 자바에서는 IP주소를 다루기 위한 클래스로 InetAddress를 제공하며 다음과 같은 메서드가 정의되어 있다.
+
+<br>
 * InetAddress의 메서드
 
   | 메서드                                                | 설명                                             |
@@ -104,6 +106,9 @@
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;각 프로토콜에 따라 통신에 사용하는 포트번호가 다르며 생략되면 각 프로토콜의 기본 포트가 사용된다.
 
 * 자바에서는 URL을 다루기 위한 클래스로 URL클래스를 제공하며 당므과 같은 메서드가 정의되어 있다.
+
+<br>
+ 
 * URL의 메서드
 
   | 메서드                                                                                                                                | 설명                                             |
@@ -152,6 +157,7 @@
 * URLConnection을 상속받아 구현한 클래스로는 HttpURLConnection과 JarURLConnection이 있으며 URL의 프로토콜이 http프로토콜이라면 openConnection()은 Http URLConnection을 반환한다.
 * URLConnection을 사용해서 연결하고자하는 자원에 접근하고 읽고 쓰기를 할 수 있다. 그 외에 관련된 정보를 읽고 쓸 수 있는 메서드가 제공된다.
   * 참고 : openConnection()은 URL클래스의 메서드이다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpURLConnection은 ```sun.net.www.protocol.http``` 패키지에 속해있다.<br><br>
+<br>
 * URLConnection의 메서드 1
 
   | 메서드                                                   | 설명                                                              |
@@ -184,6 +190,8 @@
   | long getLastModified()                                | LastModified(최종변경일)필드의 값을 반환한다.                                 |
   | OutputStream getOutputStream()                        | URLConnection에서 OutputStream을 반환한다.                             |
   | Permission getPermission()                            | Permission(허용권한)을 반환한다.                                         |
+
+<br>
 
 * URLConnection의 메서드 2
 
