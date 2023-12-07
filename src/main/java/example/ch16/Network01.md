@@ -279,4 +279,5 @@
 
 <br>
 
-> 간단한 TCP/IP서버를 구현한 예제 : [Network01_Ex06](./Network01_Ex06.java)
+> 간단한 TCP/IP서버를 구현한 예제 : [Network01_Ex06](./Network01_Ex06.java)\
+> TCP/IP와 통신하기 위한 클라이언트 프로그램 예제 : [Network01_Ex07](./Network01_Ex07.java)
