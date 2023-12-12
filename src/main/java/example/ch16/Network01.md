@@ -301,3 +301,14 @@
 > TCP/IP통신 예제 5 : [Network01_Ex12](./Network01_Ex12.java)\
 > TCP/IP통신 예제 6 : [Network01_Ex13](./Network01_Ex13.java)\
 > TCP/IP통신 예제 7 : [Network01_Ex14](./Network01_Ex14.java)
+***
+<br>
+
+### 2.3 UDP소켓 프로그래밍
+
+* TCP소켓 프로그래밍에서는 Socket과 ServerSocket을 사용하지만, UDP소켓 프로그래밍에서는 DatagramSocket과 DatagramPacket을 사용한다.
+* UDP는 연결지향적인 프로토콜이 아니기 때문에 ServerSocket이 필요하지 않다. UDP통신에서 사용하는 소켓은 DatagramSocket이며 데이터를 DatagramPacket에 담아서 전송한다.
+* DatagramPacket은 헤더와 데이터로 구성되어 있으며, 헤더에는 DatagramPacket을 수신할 호스트의 정보(호스트의 주소와 포트)가 저장되어 있다. 소포(packet)에 수신할 상대편의 주소를 적어서 보내는 것과 같다고 이해하면 된다. 그래서 DatagramPacket을 전송하면 DatagramPacket에 지정된 주소(호스트의 포트)의 DatagramSocket에 도착한다.
+
+> UDP 통신 예제 1 : [Network01_Ex15](./Network01_Ex15.java)\
+> UDP 통신 예제 2 : [Network01_Ex16](./Network01_Ex16.java)
