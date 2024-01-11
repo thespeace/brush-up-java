@@ -7,8 +7,9 @@ public class MemberConstructMain {
         // 생성자 호출 : 생성자를 호출하는 방법은 다음 코드와 같이 new 명령어 다음에 생성자 이름과 매개변수에 맞추어 인수를 전달하며 된다.
         MemberConstruct member1 = new MemberConstruct("user1",15,90);
         MemberConstruct member2 = new MemberConstruct("user2",16,80);
+        MemberConstruct member3 = new MemberConstruct("user2",16);
 
-        MemberConstruct[] members = {member1, member2};
+        MemberConstruct[] members = {member1, member2, member3};
 
         for (MemberConstruct s : members) {
             System.out.println("이름 = " + s.name + ", 나이 = " + s.age + ", 성적 = " + s.grade);

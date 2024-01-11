@@ -20,4 +20,15 @@ public class MemberConstruct {
      *   생성자의 이름은 클래스 이름과 같아야 한다. 따라서 첫 글자도 대문자로 시작한다.
      *   생성자는 반환 타입이 없다. 비워두어야 한다.
      * */
+
+
+    //오버 로딩
+    MemberConstruct(String name, int age) {
+        this(name,age,50); //this()는 생성자 내부에서 자신의 생성자를 호출할 수 있다. this는 인스턴스 자신의 참조값을 가리키기 때문.
+    }
+    /**
+     * - this() 규칙
+     *   this()는 생성자 코드의 첫줄에만 작성할 수 있다.
+     * */
+
 }
